@@ -20,5 +20,29 @@ public class RegimenModel {
 	
 	@NotNull
 	private String foodList;
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getRegimenName() {
+		return regimenName;
+	}
+
+	public void setRegimenName(String regimenName) {
+		this.regimenName = regimenName;
+	}
+
+	public String getFoodList() {
+		return foodList;
+	}
+
+	public void setFoodList(String foodList) {
+		this.foodList = foodList;
+	}
+		
 }
