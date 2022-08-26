@@ -9,6 +9,6 @@ import com.br.microserviceregimen.model.RegimenModel;
 @Repository
 public interface RegimenRepository extends JpaRepository<RegimenModel, Long> {
 
-	public List<RegimenModel> findAllByRegimen_NameContainingIgnoreCase(String regimen_name);
+	public List<RegimenModel> findAllByRegimenNameContainingIgnoreCase(String regimenName);
 	
 }

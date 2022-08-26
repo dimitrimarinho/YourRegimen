@@ -1,6 +1,5 @@
 package com.br.microserviceregimen.model;
 
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,9 @@ public class RegimenModel {
 	private long id;
 	
 	@NotNull
-	private List<String> foodList;
-
+	private String regimenName;
+	
+	@NotNull
+	private String foodList;
 	
 }
