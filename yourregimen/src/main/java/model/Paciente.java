@@ -38,6 +38,19 @@ public class Paciente {
 	@NotNull
 	private double minNutrientes;
 
+	public Paciente(long idPaciente, @NotNull String nomePaciente, @Email @NotNull String loginPaciente,
+			@NotNull String senhaPaciente, @NotNull double altura, @NotNull double peso, @NotNull double maxNutrientes,
+			@NotNull double minNutrientes) {
+		this.idPaciente = idPaciente;
+		this.nomePaciente = nomePaciente;
+		this.loginPaciente = loginPaciente;
+		this.senhaPaciente = senhaPaciente;
+		this.altura = altura;
+		this.peso = peso;
+		this.maxNutrientes = maxNutrientes;
+		this.minNutrientes = minNutrientes;
+	}
+
 	public long getIdPaciente() {
 		return idPaciente;
 	}
