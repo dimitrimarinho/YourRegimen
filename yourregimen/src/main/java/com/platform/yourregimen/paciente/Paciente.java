@@ -1,4 +1,4 @@
-/*
+
 
 package com.platform.yourregimen.paciente;
 
@@ -120,4 +120,3 @@ public class Paciente {
 
 }
 
-*/
