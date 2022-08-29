@@ -23,21 +23,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
 	@Autowired
-	private AdminRepository adminRepository;
+	private AdminRepository repository;
 	
-	
-	/*
 	@Autowired
 	private UsuarioService service;
-	*/
-	
 	
 	@GetMapping("/all")
 	public ResponseEntity <List<Admin>> getAll(){
-		return ResponseEntity.ok(adminRepository.findAll());
+		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	/*
 	@GetMapping("/{id}")
 	public ResponseEntity<Admin> getById (@PathVariable Long id){
 		return repository.findById(id)
@@ -65,5 +60,4 @@ public class AdminController {
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
-	*/
 }

@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long>{
 	
-	/*
-	public Optional<Admin> findByLoginUsuario(String loginUsuario);
-
-	public List<Admin> findAllByNomeUsuarioContainingIgnoreCase(String nomeUsuario);
-	*/
+	public List<Admin> findAllByNomeAdminContainingIgnoreCase(String nomeAdmin);
+	
+	public Optional<Admin> findByLoginAdmin(String loginAdmin);
 }
