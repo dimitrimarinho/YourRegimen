@@ -1,4 +1,3 @@
-/*
 
 package com.platform.yourregimen.paciente;
 
@@ -13,40 +12,30 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_paciente")
 public class Paciente {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPaciente;
-	
+
 	@NotNull
 	private String nomePaciente;
 
-	@Email
-	@NotNull
-	private String loginPaciente;
-
-	@NotNull
-	private String senhaPaciente;
-	
 	@NotNull
 	private double altura;
-	
+
 	@NotNull
 	private double peso;
-	
+
 	@NotNull
 	private double maxNutrientes;
-	
+
 	@NotNull
 	private double minNutrientes;
 
-	public Paciente(long idPaciente, @NotNull String nomePaciente, @Email @NotNull String loginPaciente,
-			@NotNull String senhaPaciente, @NotNull double altura, @NotNull double peso, @NotNull double maxNutrientes,
-			@NotNull double minNutrientes) {
+	public Paciente(long idPaciente, @NotNull String nomePaciente, @NotNull double altura, @NotNull double peso,
+			@NotNull double maxNutrientes, @NotNull double minNutrientes) {
 		this.idPaciente = idPaciente;
 		this.nomePaciente = nomePaciente;
-		this.loginPaciente = loginPaciente;
-		this.senhaPaciente = senhaPaciente;
 		this.altura = altura;
 		this.peso = peso;
 		this.maxNutrientes = maxNutrientes;
@@ -69,21 +58,6 @@ public class Paciente {
 		this.nomePaciente = nomePaciente;
 	}
 
-	public String getLoginPaciente() {
-		return loginPaciente;
-	}
-
-	public void setLoginPaciente(String loginPaciente) {
-		this.loginPaciente = loginPaciente;
-	}
-
-	public String getSenhaPaciente() {
-		return senhaPaciente;
-	}
-
-	public void setSenhaPaciente(String senhaPaciente) {
-		this.senhaPaciente = senhaPaciente;
-	}
 
 	public double getAltura() {
 		return altura;
@@ -116,8 +90,5 @@ public class Paciente {
 	public void setMinNutrientes(double minNutrientes) {
 		this.minNutrientes = minNutrientes;
 	}
-		
 
 }
-
-*/
