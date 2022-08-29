@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,9 +34,9 @@ public class AdminController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Admin> getById (@PathVariable Long id){
-		return repository.findById(id)
+	@GetMapping("/{idAdmin}")
+	public ResponseEntity<Admin> getById (@PathVariable Long idAdmin){
+		return repository.findById(idAdmin)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
@@ -59,5 +60,10 @@ public class AdminController {
 		return service.atualizarAdmin(admin)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	@DeleteMapping("/deletaradmin/{idAdmin}")
+	public void delete (@PathVariable Long idAdmin) {
+		repository.deleteById(idAdmin);
 	}
 }

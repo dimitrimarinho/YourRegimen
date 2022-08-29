@@ -28,7 +28,6 @@ public class Admin {
 
 	public Admin(Long idAdmin, @NotBlank String nomeAdmin, @Email @NotBlank String loginAdmin,
 			@NotBlank String senhaAdmin) {
-		super();
 		this.idAdmin = idAdmin;
 		this.nomeAdmin = nomeAdmin;
 		this.loginAdmin = loginAdmin;
