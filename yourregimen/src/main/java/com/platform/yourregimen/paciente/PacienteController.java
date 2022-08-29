@@ -1,5 +1,7 @@
 package com.platform.yourregimen.paciente;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/pacientes")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -23,6 +26,7 @@ public class PacienteController {
 	@Autowired
 	private PacienteRepository repository;
 	
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Paciente> getById(@PathVariable Long id) {
 		return repository.findById(id)
@@ -30,12 +34,12 @@ public class PacienteController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@PostMapping 
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Paciente> AddPaciente(@Valid@RequestBody Paciente paciente){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(paciente));
 	}
 	
-	@PutMapping
+	@PutMapping("/atualizar")
 	public ResponseEntity<Paciente> put(@Valid @RequestBody Paciente paciente){
 		return ResponseEntity.ok(repository.save(paciente));
 				
