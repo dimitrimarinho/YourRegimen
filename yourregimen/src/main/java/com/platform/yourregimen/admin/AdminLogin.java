@@ -1,4 +1,4 @@
-package model;
+package com.platform.yourregimen.admin;
 
 public class AdminLogin {
 	private Long id;

@@ -1,4 +1,6 @@
-package model;
+/*
+
+package com.platform.yourregimen.paciente;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -117,3 +119,5 @@ public class Paciente {
 		
 
 }
+
+*/

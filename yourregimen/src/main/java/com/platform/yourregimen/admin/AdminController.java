@@ -1,4 +1,4 @@
-package controller;
+package com.platform.yourregimen.admin;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,27 +17,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Admin;
-import model.AdminLogin;
-import repository.AdminRepository;
-import service.UsuarioService;
-
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdminController {
 
 	@Autowired
-	private AdminRepository repository;
+	private AdminRepository adminRepository;
 	
+	
+	/*
 	@Autowired
 	private UsuarioService service;
+	*/
+	
 	
 	@GetMapping("/all")
 	public ResponseEntity <List<Admin>> getAll(){
-		return ResponseEntity.ok(repository.findAll());
+		return ResponseEntity.ok(adminRepository.findAll());
 	}
 	
+	/*
 	@GetMapping("/{id}")
 	public ResponseEntity<Admin> getById (@PathVariable Long id){
 		return repository.findById(id)
@@ -65,4 +65,5 @@ public class AdminController {
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
+	*/
 }
