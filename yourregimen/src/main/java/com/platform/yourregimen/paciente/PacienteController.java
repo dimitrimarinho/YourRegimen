@@ -26,6 +26,15 @@ public class PacienteController {
 	@Autowired
 	private PacienteRepository repository;
 	
+	@GetMapping("/all")
+	public ResponseEntity<List<Paciente>> getAll(){
+		return ResponseEntity.ok(repository.findAll());
+	}
+	
+	@GetMapping("/nomePaciente/{nomePaciente}")
+	public ResponseEntity<List<Paciente>> getByName(@PathVariable String nomePaciente){
+		return ResponseEntity.ok(repository.findAllByNomePacienteContainingIgnoreCase(nomePaciente));
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Paciente> getById(@PathVariable Long id) {
