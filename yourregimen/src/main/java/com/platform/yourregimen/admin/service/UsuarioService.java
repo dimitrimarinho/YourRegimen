@@ -1,4 +1,4 @@
-package com.platform.yourregimen.admin;
+package com.platform.yourregimen.admin.service;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
@@ -9,6 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.platform.yourregimen.admin.model.Admin;
+import com.platform.yourregimen.admin.model.AdminLogin;
+import com.platform.yourregimen.admin.repository.AdminRepository;
 
 @Service
 public class UsuarioService {

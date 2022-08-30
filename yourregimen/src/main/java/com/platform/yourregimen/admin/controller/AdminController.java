@@ -1,4 +1,4 @@
-package com.platform.yourregimen.admin;
+package com.platform.yourregimen.admin.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.platform.yourregimen.admin.model.Admin;
+import com.platform.yourregimen.admin.model.AdminLogin;
+import com.platform.yourregimen.admin.repository.AdminRepository;
+import com.platform.yourregimen.admin.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
