@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.platform.yourregimen.model.CategoriaModel;
+import com.platform.yourregimen.model.Categoria;
 import com.platform.yourregimen.repository.CategoriaRepository;
 
 @RestController("/categoria")
@@ -25,38 +25,38 @@ public class CategoriaController {
 	private CategoriaRepository repository;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<CategoriaModel>> getAll(){
+	public ResponseEntity<List<Categoria>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{idCategoria}")
-	public ResponseEntity<CategoriaModel> getById(@PathVariable UUID idCategoria){
+	public ResponseEntity<Categoria> getById(@PathVariable UUID idCategoria){
 		return repository.findById(idCategoria).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/{objetivoDieta}")
-	public ResponseEntity<List<CategoriaModel>> getByObjetivoDieta (@PathVariable String objetivoDieta){
+	public ResponseEntity<List<Categoria>> getByObjetivoDieta (@PathVariable String objetivoDieta){
 		return ResponseEntity.ok(repository.findAllByObjetivoDietaContainingIgnoreCase(objetivoDieta));
 	}
 	
 	@GetMapping("/restricaofinanceira/{restricaoFinanceira}")
-	public ResponseEntity<List<CategoriaModel>> getByRestricaoFinanceira (@PathVariable boolean restricaoFinanceira){
+	public ResponseEntity<List<Categoria>> getByRestricaoFinanceira (@PathVariable boolean restricaoFinanceira){
 		return ResponseEntity.ok(repository.findAllByRestricaoFinanceira(restricaoFinanceira));
 	}
 	
 	@GetMapping("/{restricaoSaude}")
-	public ResponseEntity<List<CategoriaModel>> getByRestricaoSaude (@PathVariable String restricaoSaude){
+	public ResponseEntity<List<Categoria>> getByRestricaoSaude (@PathVariable String restricaoSaude){
 		return ResponseEntity.ok(repository.findAllByRestricaoSaudeContainingIgnoreCase(restricaoSaude));
 	}
 	
 	@PostMapping("/postarcategoria")
-	public ResponseEntity <CategoriaModel> post (@Valid @RequestBody CategoriaModel categoria){
+	public ResponseEntity <Categoria> post (@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping("/alterarcategoria")
-	public ResponseEntity <CategoriaModel> put (@Valid @RequestBody CategoriaModel categoria){
+	public ResponseEntity <Categoria> put (@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.ok(repository.save(categoria));
 	}
 	

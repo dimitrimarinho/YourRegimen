@@ -1,17 +1,23 @@
 package com.platform.yourregimen.model;
 
+import java.util.List;
 import java.util.UUID;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "categoria")
-public class CategoriaModel {
+public class Categoria {
 	
 	@Id
 	@GeneratedValue(generator = "UUID")
@@ -28,12 +34,16 @@ public class CategoriaModel {
 	@NotNull
 	private boolean restricaoFinanceira;
 
-	public CategoriaModel(UUID idCategoria, @NotNull String objetivoDieta, @NotNull String restricaoSaude,
-			@NotNull boolean restricaoFinanceira) {
-		this.idCategoria = idCategoria;
-		this.objetivoDieta = objetivoDieta;
-		this.restricaoSaude = restricaoSaude;
-		this.restricaoFinanceira = restricaoFinanceira;
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Regimen>regimen;
+
+	public List<Regimen> getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(List<Regimen> regimen) {
+		this.regimen = regimen;
 	}
 
 	public UUID getIdCategoria() {

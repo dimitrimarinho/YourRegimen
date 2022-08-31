@@ -4,20 +4,26 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "tb_paciente")
 public class Paciente {
 
-	@Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
+    @Id
 	private UUID idPaciente;
+	
+	@OneToOne
+	private Regimen regimen;
 
 	@NotNull
 	private String nomePaciente;
@@ -34,9 +40,10 @@ public class Paciente {
 	@NotNull
 	private double minNutrientes;
 
-	public Paciente(UUID idPaciente, @NotNull String nomePaciente, @NotNull double altura, @NotNull double peso,
-			@NotNull double maxNutrientes, @NotNull double minNutrientes) {
+	public Paciente(UUID idPaciente, Regimen regimen, @NotNull String nomePaciente, @NotNull double altura,
+			@NotNull double peso, @NotNull double maxNutrientes, @NotNull double minNutrientes) {
 		this.idPaciente = idPaciente;
+		this.regimen = regimen;
 		this.nomePaciente = nomePaciente;
 		this.altura = altura;
 		this.peso = peso;
@@ -91,6 +98,14 @@ public class Paciente {
 
 	public void setMinNutrientes(double minNutrientes) {
 		this.minNutrientes = minNutrientes;
+	}
+
+	public Regimen getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(Regimen regimen) {
+		this.regimen = regimen;
 	}
 
 }
