@@ -1,6 +1,7 @@
 package com.platform.yourregimen.controller;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,11 @@ public class PacienteController {
 	@Autowired
 	private PacienteRepository repository;	
 	
+	@GetMapping("/all")
+	public ResponseEntity<List<Paciente>> getAll(){
+		return ResponseEntity.ok(repository.findAll());
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Paciente> getById(@PathVariable UUID id) {
 		return repository.findById(id)
@@ -43,9 +49,9 @@ public class PacienteController {
 				
 	}
 	
-	 @DeleteMapping("/{id}")
-	 public void delete (@PathVariable UUID id) {
-		 repository.deleteById(id);
-	 }
-	 
+	@DeleteMapping("/{id}")
+	public void delete (@PathVariable UUID id) {
+		repository.deleteById(id);
+	}
+	
 }
