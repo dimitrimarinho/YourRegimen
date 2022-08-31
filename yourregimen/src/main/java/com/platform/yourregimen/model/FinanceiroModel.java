@@ -1,33 +1,37 @@
 package com.platform.yourregimen.model;
 
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "financeiro")
 public class FinanceiroModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idFinanceiro;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+    @Type(type = "org.hibernate.type.UUIDCharType")
+	private UUID idFinanceiro;
 	
 	@NotNull
 	boolean pagamentoEfetuado;
 
-	public FinanceiroModel(Long idFinanceiro, @NotNull boolean pagamentoEfetuado) {
+	public FinanceiroModel(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado) {
 		this.idFinanceiro = idFinanceiro;
 		this.pagamentoEfetuado = pagamentoEfetuado;
 	}
 
-	public Long getIdFinanceiro() {
+	public UUID getIdFinanceiro() {
 		return idFinanceiro;
 	}
 
-	public void setIdFinanceiro(Long idFinanceiro) {
+	public void setIdFinanceiro(UUID idFinanceiro) {
 		this.idFinanceiro = idFinanceiro;
 	}
 

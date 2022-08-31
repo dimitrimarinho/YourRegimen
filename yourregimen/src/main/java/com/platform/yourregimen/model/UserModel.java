@@ -1,13 +1,15 @@
 package com.platform.yourregimen.model;
 
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -15,8 +17,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class UserModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+    @Type(type = "org.hibernate.type.UUIDCharType")
+	private UUID id;
 	
 	@NotNull
 	private String firstName;
@@ -49,11 +53,11 @@ public class UserModel {
 	@NotNull
 	private String password;
 
-	public long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

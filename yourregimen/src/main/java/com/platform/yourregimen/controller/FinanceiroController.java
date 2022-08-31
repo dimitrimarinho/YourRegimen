@@ -1,6 +1,7 @@
 package com.platform.yourregimen.controller;
 
 import java.util.List;
+import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class FinanceiroController {
 	}
 	
 	@GetMapping("/{idFinanceiro}")
-	public ResponseEntity <FinanceiroModel> getById (@PathVariable Long idFinanceiro){
+	public ResponseEntity <FinanceiroModel> getById (@PathVariable UUID idFinanceiro){
 		return repository.findById(idFinanceiro)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -46,7 +47,7 @@ public class FinanceiroController {
 	}
 	
 	@DeleteMapping("/deletarregistro/{idFinanceiro}")
-	public void delete (@PathVariable Long idFinanceiro) {
+	public void delete (@PathVariable UUID idFinanceiro) {
 		repository.deleteById(idFinanceiro);
 	}
 	

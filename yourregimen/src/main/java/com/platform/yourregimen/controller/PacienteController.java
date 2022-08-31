@@ -1,6 +1,7 @@
 package com.platform.yourregimen.controller;
 
 import javax.validation.Valid;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class PacienteController {
 	private PacienteRepository repository;	
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Paciente> getById(@PathVariable Long id) {
+	public ResponseEntity<Paciente> getById(@PathVariable UUID id) {
 		return repository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.notFound().build());
@@ -43,7 +44,7 @@ public class PacienteController {
 	}
 	
 	 @DeleteMapping("/{id}")
-	 public void delete (@PathVariable long id) {
+	 public void delete (@PathVariable UUID id) {
 		 repository.deleteById(id);
 	 }
 	 

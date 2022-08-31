@@ -1,19 +1,23 @@
 package com.platform.yourregimen.model;
 
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "tb_paciente")
 public class Paciente {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPaciente;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+    @Type(type = "org.hibernate.type.UUIDCharType")
+	private UUID idPaciente;
 
 	@NotNull
 	private String nomePaciente;
@@ -30,7 +34,7 @@ public class Paciente {
 	@NotNull
 	private double minNutrientes;
 
-	public Paciente(long idPaciente, @NotNull String nomePaciente, @NotNull double altura, @NotNull double peso,
+	public Paciente(UUID idPaciente, @NotNull String nomePaciente, @NotNull double altura, @NotNull double peso,
 			@NotNull double maxNutrientes, @NotNull double minNutrientes) {
 		this.idPaciente = idPaciente;
 		this.nomePaciente = nomePaciente;
@@ -40,11 +44,11 @@ public class Paciente {
 		this.minNutrientes = minNutrientes;
 	}
 
-	public long getIdPaciente() {
+	public UUID getIdPaciente() {
 		return idPaciente;
 	}
 
-	public void setIdPaciente(long idPaciente) {
+	public void setIdPaciente(UUID idPaciente) {
 		this.idPaciente = idPaciente;
 	}
 

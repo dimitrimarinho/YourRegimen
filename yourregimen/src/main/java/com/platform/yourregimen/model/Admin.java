@@ -1,20 +1,24 @@
 package com.platform.yourregimen.model;
 
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "tb_admin")
 public class Admin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idAdmin;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID idAdmin;
 
     @NotBlank
     private String nomeAdmin;
@@ -26,7 +30,7 @@ public class Admin {
     @NotBlank
     private String senhaAdmin;
 
-	public Admin(Long idAdmin, @NotBlank String nomeAdmin, @Email @NotBlank String loginAdmin,
+	public Admin(UUID idAdmin, @NotBlank String nomeAdmin, @Email @NotBlank String loginAdmin,
 			@NotBlank String senhaAdmin) {
 		super();
 		this.idAdmin = idAdmin;
@@ -35,11 +39,11 @@ public class Admin {
 		this.senhaAdmin = senhaAdmin;
 	}
 
-	public Long getIdAdmin() {
+	public UUID getIdAdmin() {
 		return idAdmin;
 	}
 
-	public void setIdAdmin(Long idAdmin) {
+	public void setIdAdmin(UUID idAdmin) {
 		this.idAdmin = idAdmin;
 	}
 

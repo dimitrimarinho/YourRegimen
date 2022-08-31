@@ -1,16 +1,28 @@
 package com.platform.yourregimen.model;
 
+import java.util.UUID;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 public class AdminLogin {
 	
-	private Long id;
+	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+	@Type(type = "org.hibernate.type.UUIDCharType")
+	private UUID id;
+	
 	private String nome;
 	private String usuario;
 	private String senha;
 	private String token;
-	public Long getId() {
+	
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getNome() {
