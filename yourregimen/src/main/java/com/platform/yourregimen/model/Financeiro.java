@@ -11,7 +11,7 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "financeiro")
-public class FinanceiroModel {
+public class Financeiro {
 
 	@Id
     @GeneratedValue(generator = "UUID")
@@ -21,11 +21,6 @@ public class FinanceiroModel {
 	
 	@NotNull
 	boolean pagamentoEfetuado;
-
-	public FinanceiroModel(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado) {
-		this.idFinanceiro = idFinanceiro;
-		this.pagamentoEfetuado = pagamentoEfetuado;
-	}
 
 	public UUID getIdFinanceiro() {
 		return idFinanceiro;

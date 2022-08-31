@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -29,13 +28,10 @@ public class Regimen {
 	@NotNull
 	private String foodList;
 	
-	@ManyToOne
-	@JsonIgnoreProperties("regimen")
-	private Categoria categoria;
+	//@ManyToOne
+	//@JsonIgnoreProperties("regimen")
+	//private Categoria categoria;
 	
-	@OneToOne
-	private Paciente paciente;
-
 	public UUID getIdRegimen() {
 		return idRegimen;
 	}
@@ -59,7 +55,7 @@ public class Regimen {
 	public void setFoodList(String foodList) {
 		this.foodList = foodList;
 	}
-
+	/*
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -67,5 +63,5 @@ public class Regimen {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-		
+	 */	
 }

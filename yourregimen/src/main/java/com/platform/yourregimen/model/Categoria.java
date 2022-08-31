@@ -2,7 +2,6 @@ package com.platform.yourregimen.model;
 
 import java.util.List;
 import java.util.UUID;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -34,17 +32,9 @@ public class Categoria {
 	@NotNull
 	private boolean restricaoFinanceira;
 
-	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("categoria")
-	private List<Regimen>regimen;
-
-	public List<Regimen> getRegimen() {
-		return regimen;
-	}
-
-	public void setRegimen(List<Regimen> regimen) {
-		this.regimen = regimen;
-	}
+	//@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	//@JsonIgnoreProperties("categoria")
+	//private List<Regimen> regimen;
 
 	public UUID getIdCategoria() {
 		return idCategoria;
@@ -77,5 +67,13 @@ public class Categoria {
 	public void setRestricaoFinanceira(boolean restricaoFinanceira) {
 		this.restricaoFinanceira = restricaoFinanceira;
 	}
-		
+	/*
+	public List<Regimen> getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(List<Regimen> regimen) {
+		this.regimen = regimen;
+	}
+	*/
 }
