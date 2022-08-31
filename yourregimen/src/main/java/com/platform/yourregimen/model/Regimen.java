@@ -3,9 +3,9 @@ package com.platform.yourregimen.model;
 import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Regimen {
 	
 	@Id
-	@GeneratedValue(generator = "UUID")
+	@GeneratedValue(generator="UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID idRegimen;
@@ -27,11 +27,11 @@ public class Regimen {
 	
 	@NotNull
 	private String foodList;
-	
-	//@ManyToOne
-	//@JsonIgnoreProperties("regimen")
-	//private Categoria categoria;
-	
+	/*
+	@ManyToOne
+	@JsonIgnoreProperties("regimen")
+	private Categoria categoria;
+	*/
 	public UUID getIdRegimen() {
 		return idRegimen;
 	}
@@ -63,5 +63,5 @@ public class Regimen {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	 */	
+	*/	
 }

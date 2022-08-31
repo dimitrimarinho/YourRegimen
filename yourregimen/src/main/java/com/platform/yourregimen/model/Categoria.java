@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,11 +15,11 @@ import org.hibernate.annotations.Type;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "tb_categoria")
 public class Categoria {
 	
 	@Id
-	@GeneratedValue(generator = "UUID")
+	@GeneratedValue(generator="UUID")
 	@GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID idCategoria;
@@ -31,11 +32,11 @@ public class Categoria {
 	
 	@NotNull
 	private boolean restricaoFinanceira;
-
-	//@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-	//@JsonIgnoreProperties("categoria")
-	//private List<Regimen> regimen;
-
+	/*
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Regimen> regimen;
+	*/
 	public UUID getIdCategoria() {
 		return idCategoria;
 	}
