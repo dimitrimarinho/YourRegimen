@@ -1,11 +1,10 @@
-
-
-package com.platform.yourregimen.paciente;
+package com.platform.yourregimen.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.platform.yourregimen.model.Paciente;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long>{
@@ -14,4 +13,3 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long>{
 	public List<Paciente> findAllByNomePacienteContainingIgnoreCase(String nomePaciente);
 
 }
-

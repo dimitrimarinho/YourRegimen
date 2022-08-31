@@ -1,6 +1,7 @@
-package com.platform.yourregimen.admin;
+package com.platform.yourregimen.model;
 
 public class AdminLogin {
+	
 	private Long id;
 	private String nome;
 	private String usuario;

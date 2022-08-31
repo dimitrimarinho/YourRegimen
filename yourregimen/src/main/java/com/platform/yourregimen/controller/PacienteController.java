@@ -1,9 +1,6 @@
-package com.platform.yourregimen.paciente;
-
-import java.util.List;
+package com.platform.yourregimen.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.platform.yourregimen.model.Paciente;
+import com.platform.yourregimen.repository.PacienteRepository;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -24,8 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PacienteController {
 
 	@Autowired
-	private PacienteRepository repository;
-	
+	private PacienteRepository repository;	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Paciente> getById(@PathVariable Long id) {
@@ -49,4 +46,5 @@ public class PacienteController {
 	 public void delete (@PathVariable long id) {
 		 repository.deleteById(id);
 	 }
+	 
 }

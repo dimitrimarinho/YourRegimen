@@ -1,4 +1,4 @@
-package com.platform.yourregimen.user;
+package com.platform.yourregimen.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.platform.yourregimen.model.UserModel;
+import com.platform.yourregimen.repository.UserRepository;
 
 @RestController
 @RequestMapping("/users")
@@ -27,7 +29,5 @@ public class UserController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-
-	
 
 }

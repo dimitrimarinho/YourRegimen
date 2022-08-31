@@ -1,4 +1,4 @@
-package com.platform.yourregimen.admin;
+package com.platform.yourregimen.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

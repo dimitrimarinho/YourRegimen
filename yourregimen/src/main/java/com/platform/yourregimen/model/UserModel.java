@@ -1,4 +1,4 @@
-package com.platform.yourregimen.user;
+package com.platform.yourregimen.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
