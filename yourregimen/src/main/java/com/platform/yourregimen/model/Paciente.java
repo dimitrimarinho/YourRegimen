@@ -16,21 +16,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_paciente")
-public class Paciente {
+public class Paciente{
 
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Id
 	private UUID idPaciente;
+    
+    @NotNull
+    private String nomePaciente;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonIgnoreProperties("paciente")
 	private Regimen regimen;
 	
-	@NotNull
-	private String nomePaciente;
-
 	@NotNull
 	private double altura;
 
@@ -43,15 +43,17 @@ public class Paciente {
 	@NotNull
 	private double minNutrientes;
 
-	public Paciente(UUID idPaciente, Regimen regimen, @NotNull String nomePaciente, @NotNull double altura,
+	public Paciente(UUID idPaciente,@NotNull String nomePaciente, Regimen regimen,  @NotNull double altura,
 			@NotNull double peso, @NotNull double maxNutrientes, @NotNull double minNutrientes) {
+		
 		this.idPaciente = idPaciente;
-		this.regimen = regimen;
 		this.nomePaciente = nomePaciente;
+		this.regimen = regimen;
 		this.altura = altura;
 		this.peso = peso;
 		this.maxNutrientes = maxNutrientes;
 		this.minNutrientes = minNutrientes;
+		
 	}
 
 	public UUID getIdPaciente() {
@@ -69,7 +71,6 @@ public class Paciente {
 	public void setNomePaciente(String nomePaciente) {
 		this.nomePaciente = nomePaciente;
 	}
-
 
 	public double getAltura() {
 		return altura;
