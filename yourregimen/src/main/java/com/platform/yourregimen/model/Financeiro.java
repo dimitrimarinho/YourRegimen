@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "financeiro")
-public class FinanceiroModel {
+public class Financeiro {
 
 	@Id
     @GeneratedValue(generator = "UUID")
@@ -30,7 +30,7 @@ public class FinanceiroModel {
 	@JsonIgnoreProperties("financeiro")
 	private Admin admin;
 
-	public FinanceiroModel(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado, Admin admin) {
+	public Financeiro(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado, Admin admin) {
 		this.idFinanceiro = idFinanceiro;
 		this.pagamentoEfetuado = pagamentoEfetuado;
 		this.admin = admin;

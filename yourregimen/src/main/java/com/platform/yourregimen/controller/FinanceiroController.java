@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.platform.yourregimen.model.FinanceiroModel;
+import com.platform.yourregimen.model.Financeiro;
 import com.platform.yourregimen.repository.FinanceiroRepository;
 
 @RestController
@@ -25,24 +25,24 @@ public class FinanceiroController {
 	private FinanceiroRepository repository;
 	
 	@GetMapping("/all")
-	public ResponseEntity <List<FinanceiroModel>> getAll(){
+	public ResponseEntity <List<Financeiro>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{idFinanceiro}")
-	public ResponseEntity <FinanceiroModel> getById (@PathVariable UUID idFinanceiro){
+	public ResponseEntity <Financeiro> getById (@PathVariable UUID idFinanceiro){
 		return repository.findById(idFinanceiro)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping("/controlefinanceiro")
-	public ResponseEntity<FinanceiroModel> registroDePagamentos (@Valid @RequestBody FinanceiroModel financeiro){
+	public ResponseEntity<Financeiro> registroDePagamentos (@Valid @RequestBody Financeiro financeiro){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(financeiro));
 	}
 	
 	@PutMapping("/alterarfinanceiro")
-	public ResponseEntity <FinanceiroModel> alterarRegistro (@Valid @RequestBody FinanceiroModel financeiro){
+	public ResponseEntity <Financeiro> alterarRegistro (@Valid @RequestBody Financeiro financeiro){
 		return ResponseEntity.ok(repository.save(financeiro));
 	}
 	

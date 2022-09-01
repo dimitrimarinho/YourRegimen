@@ -42,10 +42,10 @@ public class Admin {
 	
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("admin")
-	private List<FinanceiroModel>financeiro;
+	private List<Financeiro>financeiro;
 
 	public Admin(UUID idAdmin, @NotBlank String nomeAdmin, @Email @NotBlank String loginAdmin,
-			@NotBlank String senhaAdmin, List<Regimen> regimen, List<FinanceiroModel> financeiro) {
+			@NotBlank String senhaAdmin, List<Regimen> regimen, List<Financeiro> financeiro) {
 		this.idAdmin = idAdmin;
 		this.nomeAdmin = nomeAdmin;
 		this.loginAdmin = loginAdmin;
@@ -94,11 +94,11 @@ public class Admin {
 		this.regimen = regimen;
 	}
 
-	public List<FinanceiroModel> getFinanceiro() {
+	public List<Financeiro> getFinanceiro() {
 		return financeiro;
 	}
 
-	public void setFinanceiro(List<FinanceiroModel> financeiro) {
+	public void setFinanceiro(List<Financeiro> financeiro) {
 		this.financeiro = financeiro;
 	}
     

@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.platform.yourregimen.model.FinanceiroModel;
+import com.platform.yourregimen.model.Financeiro;
 
 @Repository
-public interface FinanceiroRepository extends JpaRepository<FinanceiroModel, UUID>{
+public interface FinanceiroRepository extends JpaRepository<Financeiro, UUID>{
 
-	public List<FinanceiroModel> findAllByPagamentoEfetuado (boolean pagamentoEfetuado);
+	public List<Financeiro> findAllByPagamentoEfetuado (boolean pagamentoEfetuado);
 	
 }
