@@ -8,8 +8,7 @@ import com.platform.yourregimen.model.Paciente;
 
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, UUID>{
-	
-	
+		
 	public List<Paciente> findAllByNomePacienteContainingIgnoreCase(String nomePaciente);
 
 }
