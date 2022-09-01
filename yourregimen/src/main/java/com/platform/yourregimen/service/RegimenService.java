@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.json.JSONArray;
