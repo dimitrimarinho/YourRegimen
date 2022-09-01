@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class RegimenService {
-
+	
 	private double sugar_g;
 	private double fiber_g;
 	private double serving_size_g;
@@ -139,15 +139,24 @@ public class RegimenService {
 	public void setCarbohydrates_total_g(double carbohydrates_total_g) {
 		this.carbohydrates_total_g = carbohydrates_total_g;
 	}
-	/*
-	@Override
-	public String toString() {
-		return "sugar_g=" + sugar_g + ", fiber_g=" + fiber_g + ", serving_size_g=" + serving_size_g + ", sodium_mg="
-				+ sodium_mg + ", name=" + name + ", potassium_mg=" + potassium_mg + ", fat_satured_g=" + fat_saturated_g
-				+ ", fat_total_g=" + fat_total_g + ", calories=" + calories + ", cholesterol_mg=" + cholesterol_mg
-				+ ", protein_g=" + protein_g + ", carbohydrates_total_g=" + carbohydrates_total_g + "]";
+
+	public String TranslateApi(String query) throws IOException {
+		AsyncHttpClient client = new DefaultAsyncHttpClient();
+		String queryResp = client.prepare("POST", "https://google-translate1.p.rapidapi.com/language/translate/v2")
+			.setHeader("content-type", "application/x-www-form-urlencoded")
+			.setHeader("Accept-Encoding", "application/gzip")
+			.setHeader("X-RapidAPI-Key", "ad7f74455fmshcfc2cc4510d3be2p11ee75jsnb898c5c0567a")
+			.setHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
+			.setBody("q=" +query+ "&target=en&source=pt")
+			.execute()
+			.toCompletableFuture()
+			.join().getResponseBody();
+
+		client.close();
+		
+		return queryResp;
 	}
-	*/
+	
 	public String ConectarApi(String inputFoods) throws IOException, InterruptedException {
 		String foodsSearch = URLEncoder.encode(inputFoods, StandardCharsets.UTF_8);
 		System.out.print("\n" + foodsSearch);
@@ -193,10 +202,11 @@ public class RegimenService {
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Digite a lista de alimentos da dieta: ");
-		String food = scan.nextLine();
+		String query = scan.nextLine();
 		scan.close();
 		RegimenService alimento = new RegimenService();
-		String getfromAPI = alimento.ConectarApi(food);
+		alimento.TranslateApi(query);
+		String getfromAPI = alimento.ConectarApi(query);
 		alimento. getInformations(getfromAPI);			
 		
 	}
