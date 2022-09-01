@@ -2,6 +2,7 @@ package com.platform.yourregimen.controller;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.platform.yourregimen.model.Paciente;
+import com.platform.yourregimen.model.PacienteLogin;
 import com.platform.yourregimen.repository.PacienteRepository;
+import com.platform.yourregimen.service.PacienteService;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -25,6 +30,9 @@ public class PacienteController {
 
 	@Autowired
 	private PacienteRepository repository;	
+	
+	@Autowired
+	private PacienteService service;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<Paciente>> getAll(){
@@ -38,15 +46,25 @@ public class PacienteController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
+	@PostMapping("/logar")
+	public ResponseEntity<PacienteLogin> loginAdmin (@RequestBody Optional<PacienteLogin> user){
+		return service.autenticarPaciente(user)
+			.map(resp -> ResponseEntity.ok(resp))
+			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Paciente> AddPaciente(@Valid@RequestBody Paciente paciente){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(paciente));
+	public ResponseEntity<Paciente> cadastroPaciente (@Valid @RequestBody Paciente paciente){
+		return service.cadastroPaciente(paciente)
+				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
 	@PutMapping("/atualizar")
-	public ResponseEntity<Paciente> put(@Valid @RequestBody Paciente paciente){
-		return ResponseEntity.ok(repository.save(paciente));
-				
+	public ResponseEntity<Paciente> atualizarPaciente (@Valid @RequestBody Paciente paciente){
+		return service.atualizarPaciente(paciente)
+				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@DeleteMapping("/{id}")
