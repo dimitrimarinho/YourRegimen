@@ -1,9 +1,12 @@
 package com.platform.yourregimen.model;
 
 import java.util.UUID;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,9 +25,10 @@ public class Paciente {
     @Id
 	private UUID idPaciente;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("paciente")
 	private Regimen regimen;
-
+	
 	@NotNull
 	private String nomePaciente;
 

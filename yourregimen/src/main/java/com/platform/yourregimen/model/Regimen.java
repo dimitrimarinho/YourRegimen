@@ -1,6 +1,8 @@
 package com.platform.yourregimen.model;
 
 import java.util.UUID;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,7 +35,12 @@ public class Regimen {
 	@JsonIgnoreProperties("regimen")
 	private Categoria categoria;
 	
-	@OneToOne
+	@ManyToOne
+	@JsonIgnoreProperties("regimen")
+	private Admin admin;
+	
+	@OneToOne(mappedBy = "regimen")
+	@JsonIgnoreProperties("regimen")
 	private Paciente paciente;
 
 	public UUID getIdRegimen() {
@@ -66,6 +73,22 @@ public class Regimen {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 		
 }

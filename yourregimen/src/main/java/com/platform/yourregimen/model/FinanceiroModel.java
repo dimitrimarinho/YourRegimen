@@ -4,10 +4,14 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "financeiro")
@@ -21,10 +25,15 @@ public class FinanceiroModel {
 	
 	@NotNull
 	boolean pagamentoEfetuado;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("financeiro")
+	private Admin admin;
 
-	public FinanceiroModel(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado) {
+	public FinanceiroModel(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado, Admin admin) {
 		this.idFinanceiro = idFinanceiro;
 		this.pagamentoEfetuado = pagamentoEfetuado;
+		this.admin = admin;
 	}
 
 	public UUID getIdFinanceiro() {
@@ -41,6 +50,14 @@ public class FinanceiroModel {
 
 	public void setPagamentoEfetuado(boolean pagamentoEfetuado) {
 		this.pagamentoEfetuado = pagamentoEfetuado;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 	
 }
