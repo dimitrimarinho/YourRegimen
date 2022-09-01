@@ -1,10 +1,8 @@
 package com.platform.yourregimen.model;
 
 import java.util.UUID;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -63,6 +61,5 @@ public class PacienteLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
+		
 }
