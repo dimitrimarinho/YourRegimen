@@ -1,7 +1,4 @@
 package com.platform.yourregimen.service;
-/*
-
-package com.platform.yourregimen.admin;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
@@ -13,6 +10,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.platform.yourregimen.model.Admin;
+import com.platform.yourregimen.model.AdminLogin;
+import com.platform.yourregimen.repository.AdminRepository;
+
+
 @Service
 public class UsuarioService {
 
@@ -20,7 +22,7 @@ public class UsuarioService {
 	private AdminRepository repository;
 
 	public Optional<Admin> cadastroAdmin(Admin admin) {
-		if (repository.findByLoginUsuario(admin.getLoginAdmin()).isPresent())
+		if (repository.findByLoginAdmin(admin.getLoginAdmin()).isPresent())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 		admin.setSenhaAdmin(criptografarSenha(admin.getSenhaAdmin()));
 		return Optional.of(repository.save(admin));
@@ -28,7 +30,7 @@ public class UsuarioService {
 
 	public Optional<Admin> atualizarAdmin(Admin admin) {
 		if (repository.findById(admin.getIdAdmin()).isPresent()) {
-			Optional<Admin> buscaLoginAdmin = repository.findByLoginUsuario(admin.getLoginAdmin());
+			Optional<Admin> buscaLoginAdmin = repository.findByLoginAdmin(admin.getLoginAdmin());
 			if (buscaLoginAdmin.get().getIdAdmin() != admin.getIdAdmin()) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O usuário já existe!", null);
 			}
@@ -39,7 +41,7 @@ public class UsuarioService {
 	}
 	
 	public Optional<AdminLogin> autenticarAdmin(Optional<AdminLogin>user){
-		Optional<Admin> admin = repository.findByLoginUsuario(user.get().getSenha());
+		Optional<Admin> admin = repository.findByLoginAdmin(user.get().getSenha());
 		if (admin.isPresent()) {
 			if(compararSenhas(user.get().getSenha(), admin.get().getSenhaAdmin())) {
 				user.get().setToken(gerarBasicToken(admin.get().getLoginAdmin(), user.get().getSenha()));
@@ -71,4 +73,3 @@ public class UsuarioService {
 
 }
 
-*/
