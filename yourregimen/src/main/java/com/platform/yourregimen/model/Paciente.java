@@ -1,7 +1,6 @@
 package com.platform.yourregimen.model;
 
 import java.util.UUID;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,26 +10,25 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_paciente")
-public class Paciente {
+public class Paciente{
 
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Id
 	private UUID idPaciente;
+    
+    @NotNull
+    private String nomePaciente;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonIgnoreProperties("paciente")
 	private Regimen regimen;
 	
-	@NotNull
-	private String nomePaciente;
-
 	@NotNull
 	private double altura;
 
@@ -38,21 +36,10 @@ public class Paciente {
 	private double peso;
 
 	@NotNull
-	private double maxNutrientes;
+	private double maxCalories;
 
 	@NotNull
-	private double minNutrientes;
-
-	public Paciente(UUID idPaciente, Regimen regimen, @NotNull String nomePaciente, @NotNull double altura,
-			@NotNull double peso, @NotNull double maxNutrientes, @NotNull double minNutrientes) {
-		this.idPaciente = idPaciente;
-		this.regimen = regimen;
-		this.nomePaciente = nomePaciente;
-		this.altura = altura;
-		this.peso = peso;
-		this.maxNutrientes = maxNutrientes;
-		this.minNutrientes = minNutrientes;
-	}
+	private double minCalories;
 
 	public UUID getIdPaciente() {
 		return idPaciente;
@@ -70,6 +57,13 @@ public class Paciente {
 		this.nomePaciente = nomePaciente;
 	}
 
+	public Regimen getRegimen() {
+		return regimen;
+	}
+
+	public void setRegimen(Regimen regimen) {
+		this.regimen = regimen;
+	}
 
 	public double getAltura() {
 		return altura;
@@ -87,28 +81,20 @@ public class Paciente {
 		this.peso = peso;
 	}
 
-	public double getMaxNutrientes() {
-		return maxNutrientes;
+	public double getMaxCalories() {
+		return maxCalories;
 	}
 
-	public void setMaxNutrientes(double maxNutrientes) {
-		this.maxNutrientes = maxNutrientes;
+	public void setMaxCalories(double maxCalories) {
+		this.maxCalories = maxCalories;
 	}
 
-	public double getMinNutrientes() {
-		return minNutrientes;
+	public double getMinCalories() {
+		return minCalories;
 	}
 
-	public void setMinNutrientes(double minNutrientes) {
-		this.minNutrientes = minNutrientes;
-	}
-
-	public Regimen getRegimen() {
-		return regimen;
-	}
-
-	public void setRegimen(Regimen regimen) {
-		this.regimen = regimen;
+	public void setMinCalories(double minCalories) {
+		this.minCalories = minCalories;
 	}
 
 }

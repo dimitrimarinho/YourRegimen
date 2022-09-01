@@ -1,11 +1,8 @@
 package com.platform.yourregimen.controller;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
-import org.asynchttpclient.AsyncHttpClient;
-import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +24,7 @@ public class RegimenController {
 	@Autowired
 	private RegimenRepository repository;
 
-	@GetMapping(value = "/regimen")
+	@GetMapping("/regimen")
 	public ResponseEntity<List<Regimen>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
@@ -57,24 +54,5 @@ public class RegimenController {
 	public void delete (@PathVariable UUID id) {
 		repository.deleteById(id);
 	}
-	
-	@GetMapping(value="/nutritionalInformation")	
-	public String nutritionalnformation() {		
-		AsyncHttpClient client = new DefaultAsyncHttpClient();		
-		String Response = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato")
-				.setHeader("X-RapidAPI-Key", "834cdc197bmsh406c60b10ca5275p18b7d4jsn0a3285059be5")
-				.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
-				.execute()
-				.toCompletableFuture()
-				.join().getResponseBody();
-			
-		try {
-			client.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return Response;		
-	}	
 	
 }
