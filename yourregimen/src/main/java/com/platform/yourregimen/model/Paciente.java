@@ -24,6 +24,12 @@ public class Paciente{
     
     @NotNull
     private String nomePaciente;
+    
+    @NotNull
+    private String loginPaciente;
+    
+    @NotNull
+    private String senhaPaciente;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JsonIgnoreProperties("paciente")
@@ -96,5 +102,23 @@ public class Paciente{
 	public void setMinCalories(double minCalories) {
 		this.minCalories = minCalories;
 	}
+
+	public String getLoginPaciente() {
+		return loginPaciente;
+	}
+
+	public void setLoginPaciente(String loginPaciente) {
+		this.loginPaciente = loginPaciente;
+	}
+
+	public String getSenhaPaciente() {
+		return senhaPaciente;
+	}
+
+	public void setSenhaPaciente(String senhaPaciente) {
+		this.senhaPaciente = senhaPaciente;
+	}
+
+	
 
 }

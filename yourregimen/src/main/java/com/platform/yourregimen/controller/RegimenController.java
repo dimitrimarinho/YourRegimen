@@ -29,7 +29,7 @@ public class RegimenController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/regimen/{id}")
 	public ResponseEntity<Regimen> getById(@PathVariable UUID id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
