@@ -1,8 +1,14 @@
 package com.platform.yourregimen.controller;
 
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
+
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.platform.yourregimen.model.Regimen;
 import com.platform.yourregimen.repository.RegimenRepository;
+import com.platform.yourregimen.service.RegimenService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -24,9 +31,29 @@ public class RegimenController {
 	@Autowired
 	private RegimenRepository repository;
 
+	@Autowired
+	private RegimenService service;
+
 	@GetMapping("/regimen")
 	public ResponseEntity<List<Regimen>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
+	}
+	
+	@GetMapping("regimen/infoApi")
+	String ConectarApi(String inputFoods) throws IOException, InterruptedException {
+		String foodsSearch = URLEncoder.encode(inputFoods, StandardCharsets.UTF_8);
+		service.TranslateApi(foodsSearch);
+		AsyncHttpClient client = new DefaultAsyncHttpClient();
+		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
+			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+			.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
+			.execute()
+			.toCompletableFuture()
+			.join().getResponseBody();
+
+		client.close();
+		//System.out.println(resp);
+		return resp;		
 	}
 	
 	@GetMapping("/regimen/{id}")

@@ -8,7 +8,9 @@ import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RegimenService {
 	
 	private double sugar_g;
@@ -145,7 +147,7 @@ public class RegimenService {
 		String queryResp = client.prepare("POST", "https://google-translate1.p.rapidapi.com/language/translate/v2")
 			.setHeader("content-type", "application/x-www-form-urlencoded")
 			.setHeader("Accept-Encoding", "application/gzip")
-			.setHeader("X-RapidAPI-Key", "ad7f74455fmshcfc2cc4510d3be2p11ee75jsnb898c5c0567a")
+			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
 			.setHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
 			.setBody("q=" +query+ "&target=en&source=pt")
 			.execute()
@@ -162,7 +164,7 @@ public class RegimenService {
 		System.out.print("\n" + foodsSearch);
 		AsyncHttpClient client = new DefaultAsyncHttpClient();
 		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
-			.setHeader("X-RapidAPI-Key", "ad7f74455fmshcfc2cc4510d3be2p11ee75jsnb898c5c0567a")
+			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
 			.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
 			.execute()
 			.toCompletableFuture()
