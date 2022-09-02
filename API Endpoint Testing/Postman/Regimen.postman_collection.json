@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "a3f16b1c-f0e1-471f-8fe2-8f6681f61061",
+		"name": "Regimen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dieta para emagrecer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"regimenName\": \"Dieta para emagrecer\",\r\n  \"foodList\": \"frutas vermelhas, arroz integral, frango, iogurte natural\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta Japonesa (Incluir Temaki)",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idRegimen\": \"{{idRegimen_PUT}}\",\r\n  \"regimenName\": \"Dieta Japonesa\",\r\n  \"foodList\": \"Bentô, Sushi, Sashimi, Temaki\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta Teste (Para Deletar)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"regimenName\": \"Dieta para viciados em massa\",\r\n  \"foodList\": \"lasanha, pizza, pão, macarrão\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Dieta Teste",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/regimen/{{idRegimen_delete}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen",
+						"{{idRegimen_delete}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta Mediterrânea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"regimenName\": \"Dieta mediterrânea\",\r\n  \"foodList\": \"Aves, peixes, frutos do mar, vinho, queijo, castanhas\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta Japonesa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"regimenName\": \"Dieta Japonesa\",\r\n  \"foodList\": \"Bentô, Sushi, Sashimi\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL (Regimen)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/regimen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID (Regimen)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimen/{{idRegimen_GET}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimen",
+						"{{idRegimen_GET}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By Name (Regimen)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/regimenName/{{regimenName}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"regimenName",
+						"{{regimenName}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "idRegimen_GET",
+			"value": "c5db133e-519d-4d54-9f3f-e7775b769684"
+		},
+		{
+			"key": "idRegimen_delete",
+			"value": "77be661a-930e-4403-89f2-b1b23c288534"
+		},
+		{
+			"key": "idRegimen_PUT",
+			"value": "f97ed557-5a3b-4c66-a66d-50d59604f287",
+			"type": "default"
+		},
+		{
+			"key": "regimenName",
+			"value": "Dieta mediterrânea"
+		}
+	]
+}
