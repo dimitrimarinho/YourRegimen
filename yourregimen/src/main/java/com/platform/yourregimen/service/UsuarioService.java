@@ -2,17 +2,14 @@ package com.platform.yourregimen.service;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
-
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import com.platform.yourregimen.model.Admin;
 import com.platform.yourregimen.model.AdminLogin;
-import com.platform.yourregimen.model.Paciente;
 import com.platform.yourregimen.repository.AdminRepository;
 
 @Service
