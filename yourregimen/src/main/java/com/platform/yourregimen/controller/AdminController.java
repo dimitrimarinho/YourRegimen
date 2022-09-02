@@ -45,6 +45,7 @@ public class AdminController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
+
 	@PostMapping("/logar")
 	public ResponseEntity<AdminLogin> autenticationUsuario(@RequestBody Optional<AdminLogin> usuario) {		
 		return service.logarUsuario(usuario)

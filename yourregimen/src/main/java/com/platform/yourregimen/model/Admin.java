@@ -31,17 +31,17 @@ public class Admin {
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
-	@NotNull
-	private String nomeUsuario;
-	
+	@NotNull(message = "O atributo Nome é Obrigatório!")
+	private String nome;
+
 	@Schema(example = "email@email.com.br")
-	@NotNull(message = "O campo Usuário é obrigatório!")
-	@Email(message = "O campo Usuário deve ser um e-mail válido!")
-	private String loginUsuario;
-	
-	@NotNull
-	@Size(min = 8,max = 64)
-	private String senhaUsuario;
+	@NotNull(message = "O atributo Usuário é Obrigatório!")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
+	private String usuario;
+
+	@NotNull(message = "O atributo Senha é Obrigatório!")
+	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+	private String senha;
     
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("admin")
@@ -51,15 +51,18 @@ public class Admin {
 	@JsonIgnoreProperties("admin")
 	private List<Financeiro>financeiro;
 
-	public Admin(UUID id, @NotNull @NotBlank String nomeUsuario,
-			@NotNull(message = "O campo Usuário é obrigatório!") @NotBlank @Email(message = "O campo Usuário deve ser um e-mail válido!") String loginUsuario,
-			@NotNull @Size(min = 8, max = 64) String senhaUsuario, List<Regimen> regimen, List<Financeiro> financeiro) {
+	public Admin(UUID id, @NotNull(message = "O atributo Nome é Obrigatório!") String nome,
+			@NotNull(message = "O atributo Usuário é Obrigatório!") @Email(message = "O atributo Usuário deve ser um email válido!") String usuario,
+			@NotBlank(message = "O atributo Senha é Obrigatório!") @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres") String senha, List<Regimen> regimen, List<Financeiro> financeiro) {
 		this.id = id;
-		this.nomeUsuario = nomeUsuario;
-		this.loginUsuario = loginUsuario;
-		this.senhaUsuario = senhaUsuario;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
 		this.regimen = regimen;
 		this.financeiro = financeiro;
+	}
+
+	public Admin() {
 	}
 
 	public UUID getId() {
@@ -70,28 +73,28 @@ public class Admin {
 		this.id = id;
 	}
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getLoginUsuario() {
-		return loginUsuario;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setLoginUsuario(String loginUsuario) {
-		this.loginUsuario = loginUsuario;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getSenhaUsuario() {
-		return senhaUsuario;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public List<Regimen> getRegimen() {

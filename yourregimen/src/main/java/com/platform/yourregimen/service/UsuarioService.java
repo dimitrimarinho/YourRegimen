@@ -22,10 +22,10 @@ public class UsuarioService {
 
 	public Optional<Admin> cadastrarUsuario(Admin usuario) {
 
-		if (repository.findByLoginUsuario(usuario.getLoginUsuario()).isPresent())
+		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
-		usuario.setSenhaUsuario(criptografarSenha(usuario.getSenhaUsuario()));
+		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
 		return Optional.of(repository.save(usuario));
 	}
@@ -33,14 +33,14 @@ public class UsuarioService {
 	public Optional<Admin> atualizarUsuario(Admin usuario) {
 
 		if (repository.findById(usuario.getId()).isPresent()) {
-			Optional<Admin> buscaUsuario = repository.findByLoginUsuario(usuario.getLoginUsuario());
+			Optional<Admin> buscaUsuario = repository.findByUsuario(usuario.getUsuario());
 
 			if (buscaUsuario.isPresent()) {				
 				if (buscaUsuario.get().getId() != usuario.getId())
 					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 			}
 			
-			usuario.setSenhaUsuario(criptografarSenha(usuario.getSenhaUsuario()));
+			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
 			return Optional.of(repository.save(usuario));
 		} 
@@ -50,17 +50,16 @@ public class UsuarioService {
 	
 	public Optional<AdminLogin> logarUsuario(Optional<AdminLogin> usuarioLogin) {
 		
-		Optional<Admin> usuario = repository.findByLoginUsuario(usuarioLogin.get().getLoginUsuario());
+		Optional<Admin> usuario = repository.findByUsuario(usuarioLogin.get().getUsuario());
 
 		if (usuario.isPresent()) {
-			if (compararSenhas(usuarioLogin.get().getSenhaUsuario(), usuario.get().getSenhaUsuario())) {
-
+			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setId(usuario.get().getId());				
-				usuarioLogin.get().setNomeUsuario(usuario.get().getNomeUsuario());
-				usuarioLogin.get().setLoginUsuario(usuario.get().getLoginUsuario());
-				usuarioLogin.get().setSenhaUsuario(usuario.get().getSenhaUsuario());
-				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getLoginUsuario(), usuarioLogin.get().getSenhaUsuario()));
-				
+				usuarioLogin.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setUsuario(usuario.get().getUsuario());
+				usuarioLogin.get().setSenha(usuario.get().getSenha());
+
 				return usuarioLogin;
 
 			}
@@ -89,5 +88,4 @@ public class UsuarioService {
 		byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(estruturaBase64);
 	}
-
 }
