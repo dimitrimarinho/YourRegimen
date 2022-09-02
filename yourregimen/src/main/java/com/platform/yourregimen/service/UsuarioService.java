@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.platform.yourregimen.model.Admin;
 import com.platform.yourregimen.model.AdminLogin;
+import com.platform.yourregimen.model.Paciente;
 import com.platform.yourregimen.repository.AdminRepository;
 
 @Service
@@ -21,12 +22,9 @@ public class UsuarioService {
 	private AdminRepository repository;
 
 	public Optional<Admin> cadastrarUsuario(Admin usuario) {
-
 		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
-
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
-
 		return Optional.of(repository.save(usuario));
 	}
 
@@ -61,31 +59,24 @@ public class UsuarioService {
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 
 				return usuarioLogin;
-
 			}
-		}		
-		
-		throw new ResponseStatusException(
-				HttpStatus.UNAUTHORIZED, "Usuário ou senha inválidos!", null);
+		}
+		return Optional.empty();
 	}
 	
 	private String criptografarSenha(String senha) {
-
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String senhaEncoder = encoder.encode(senha);
-
-		return senhaEncoder;
+		return encoder.encode(senha);
 	}
 	
 	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		return encoder.matches(senhaDigitada, senhaBanco);		
+		return encoder.matches(senhaDigitada, senhaBanco);
 	}
 	
-	private String gerarBasicToken(String email, String password) {
-		String estrutura = email + ":" + password;
-		byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
-		return "Basic " + new String(estruturaBase64);
-	}
+    private String gerarBasicToken(String email, String password) {
+    	String estrutura = email+": "+password;
+    	byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
+    	return "Basic "+new String(estruturaBase64);
+    }
 }

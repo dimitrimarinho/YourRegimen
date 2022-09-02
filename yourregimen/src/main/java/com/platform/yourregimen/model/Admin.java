@@ -2,45 +2,35 @@ package com.platform.yourregimen.model;
 
 import java.util.List;
 import java.util.UUID;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
 @Entity
 @Table(name = "tb_admin")
 public class Admin {
-
-    @Id
+    
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
+    @Id
     private UUID id;
 
-	@NotNull(message = "O atributo Nome é Obrigatório!")
+	@NotNull
 	private String nome;
 
-	@Schema(example = "email@email.com.br")
-	@NotNull(message = "O atributo Usuário é Obrigatório!")
-	@Email(message = "O atributo Usuário deve ser um email válido!")
+	@NotNull
 	private String usuario;
 
-	@NotNull(message = "O atributo Senha é Obrigatório!")
-	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
+	@NotNull
 	private String senha;
     
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
@@ -50,20 +40,6 @@ public class Admin {
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("admin")
 	private List<Financeiro>financeiro;
-
-	public Admin(UUID id, @NotNull(message = "O atributo Nome é Obrigatório!") String nome,
-			@NotNull(message = "O atributo Usuário é Obrigatório!") @Email(message = "O atributo Usuário deve ser um email válido!") String usuario,
-			@NotBlank(message = "O atributo Senha é Obrigatório!") @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres") String senha, List<Regimen> regimen, List<Financeiro> financeiro) {
-		this.id = id;
-		this.nome = nome;
-		this.usuario = usuario;
-		this.senha = senha;
-		this.regimen = regimen;
-		this.financeiro = financeiro;
-	}
-
-	public Admin() {
-	}
 
 	public UUID getId() {
 		return id;
