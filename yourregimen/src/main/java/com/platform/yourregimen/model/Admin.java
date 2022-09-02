@@ -11,10 +11,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "tb_admin")
@@ -24,17 +29,19 @@ public class Admin {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Type(type = "org.hibernate.type.UUIDCharType")
-    private UUID idAdmin;
+    private UUID id;
 
-    @NotBlank
-    private String nomeAdmin;
-
-    @Email
-    @NotBlank
-    private String loginAdmin;
-
-    @NotBlank
-    private String senhaAdmin;
+	@NotNull
+	private String nomeUsuario;
+	
+	@Schema(example = "email@email.com.br")
+	@NotNull(message = "O campo Usuário é obrigatório!")
+	@Email(message = "O campo Usuário deve ser um e-mail válido!")
+	private String loginUsuario;
+	
+	@NotNull
+	@Size(min = 8,max = 64)
+	private String senhaUsuario;
     
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("admin")
@@ -44,46 +51,47 @@ public class Admin {
 	@JsonIgnoreProperties("admin")
 	private List<Financeiro>financeiro;
 
-	public Admin(UUID idAdmin, @NotBlank String nomeAdmin, @Email @NotBlank String loginAdmin,
-			@NotBlank String senhaAdmin, List<Regimen> regimen, List<Financeiro> financeiro) {
-		this.idAdmin = idAdmin;
-		this.nomeAdmin = nomeAdmin;
-		this.loginAdmin = loginAdmin;
-		this.senhaAdmin = senhaAdmin;
+	public Admin(UUID id, @NotNull @NotBlank String nomeUsuario,
+			@NotNull(message = "O campo Usuário é obrigatório!") @NotBlank @Email(message = "O campo Usuário deve ser um e-mail válido!") String loginUsuario,
+			@NotNull @Size(min = 8, max = 64) String senhaUsuario, List<Regimen> regimen, List<Financeiro> financeiro) {
+		this.id = id;
+		this.nomeUsuario = nomeUsuario;
+		this.loginUsuario = loginUsuario;
+		this.senhaUsuario = senhaUsuario;
 		this.regimen = regimen;
 		this.financeiro = financeiro;
 	}
 
-	public UUID getIdAdmin() {
-		return idAdmin;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setIdAdmin(UUID idAdmin) {
-		this.idAdmin = idAdmin;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
-	public String getNomeAdmin() {
-		return nomeAdmin;
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setNomeAdmin(String nomeAdmin) {
-		this.nomeAdmin = nomeAdmin;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
-	public String getLoginAdmin() {
-		return loginAdmin;
+	public String getLoginUsuario() {
+		return loginUsuario;
 	}
 
-	public void setLoginAdmin(String loginAdmin) {
-		this.loginAdmin = loginAdmin;
+	public void setLoginUsuario(String loginUsuario) {
+		this.loginUsuario = loginUsuario;
 	}
 
-	public String getSenhaAdmin() {
-		return senhaAdmin;
+	public String getSenhaUsuario() {
+		return senhaUsuario;
 	}
 
-	public void setSenhaAdmin(String senhaAdmin) {
-		this.senhaAdmin = senhaAdmin;
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
 	}
 
 	public List<Regimen> getRegimen() {

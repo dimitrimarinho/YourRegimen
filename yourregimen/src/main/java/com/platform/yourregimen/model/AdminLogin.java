@@ -14,38 +14,61 @@ public class AdminLogin {
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
 	
-	private String nome;
-	private String usuario;
-	private String senha;
-	private String token;
+	private String nomeUsuario;
 	
+	private String loginUsuario;
+	
+	private String senhaUsuario;
+	
+	private String token;
+
+	public AdminLogin(UUID id, String nomeUsuario, String loginUsuario, String senhaUsuario, String token) {
+		this.id = id;
+		this.nomeUsuario = nomeUsuario;
+		this.loginUsuario = loginUsuario;
+		this.senhaUsuario = senhaUsuario;
+		this.token = token;
+	}
+
+	public AdminLogin() {
+	}
+
 	public UUID getId() {
 		return id;
 	}
+
 	public void setId(UUID id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
-	public String getUsuario() {
-		return usuario;
+
+	public String getLoginUsuario() {
+		return loginUsuario;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+
+	public void setLoginUsuario(String loginUsuario) {
+		this.loginUsuario = loginUsuario;
 	}
-	public String getSenha() {
-		return senha;
+
+	public String getSenhaUsuario() {
+		return senhaUsuario;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
 	}
+
 	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}

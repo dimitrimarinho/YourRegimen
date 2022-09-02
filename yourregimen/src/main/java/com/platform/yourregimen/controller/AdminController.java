@@ -29,42 +29,41 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class AdminController {
 
 	@Autowired
-	private AdminRepository adminRepository;	
-	
-	@Autowired
 	private UsuarioService service;
-		
+
+	@Autowired
+	private AdminRepository adminRepository;
+
 	@GetMapping("/all")
-	public ResponseEntity <List<Admin>> getAll(){
+	public ResponseEntity<List<Admin>> buscaUsuarios(){
 		return ResponseEntity.ok(adminRepository.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Admin> getById (@PathVariable UUID idAdmin){
-		return adminRepository.findById(idAdmin)
-				.map(resp -> ResponseEntity.ok(resp))
+	public ResponseEntity<Admin> buscaUsuarioById(@PathVariable UUID id){
+		return adminRepository.findById(id).map(produto->ResponseEntity.ok(produto))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	
+
 	@PostMapping("/logar")
-	public ResponseEntity<AdminLogin> loginAdmin (@RequestBody Optional<AdminLogin> user){
-		return service.autenticarAdmin(user)
+	public ResponseEntity<AdminLogin> autenticationUsuario(@RequestBody Optional<AdminLogin> usuario) {		
+		return service.logarUsuario(usuario)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
-	
+
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Admin> cadastroAdmin (@Valid @RequestBody Admin admin){
-		return service.cadastroAdmin(admin)
-				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+	public ResponseEntity<Admin> postUsuario(@Valid @RequestBody Admin usuario) {		
+		return service.cadastrarUsuario(usuario)
+			.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());		
 	}
 	
 	@PutMapping("/atualizar")
-	public ResponseEntity<Admin> atualizarAdmin (@Valid @RequestBody Admin admin){
-		return service.atualizarAdmin(admin)
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	public ResponseEntity<Admin> putUsuario(@Valid @RequestBody Admin usuario){		
+		return service.atualizarUsuario(usuario)
+			.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 }

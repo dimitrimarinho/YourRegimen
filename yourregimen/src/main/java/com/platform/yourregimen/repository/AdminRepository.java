@@ -10,8 +10,8 @@ import com.platform.yourregimen.model.Admin;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, UUID>{
 
-	Optional<Admin> findByLoginAdmin(String admin);
+	Optional<Admin> findByLoginUsuario(String usuario);
 	
-	public List<Admin> findAllByNomeAdminContainingIgnoreCase(String nome);
+	public List<Admin> findAllByNomeUsuarioContainingIgnoreCase(String nome);
 	
 }
