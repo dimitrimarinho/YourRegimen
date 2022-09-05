@@ -29,13 +29,13 @@ public class CategoriaController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{idCategoria}")
+	@GetMapping("/buscarporID/{idCategoria}")
 	public ResponseEntity<Categoria> getById(@PathVariable UUID idCategoria){
 		return repository.findById(idCategoria).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/{objetivoDieta}")
+	@GetMapping("/buscarporObjetivoDieta/{objetivoDieta}")
 	public ResponseEntity<List<Categoria>> getByObjetivoDieta (@PathVariable String objetivoDieta){
 		return ResponseEntity.ok(repository.findAllByObjetivoDietaContainingIgnoreCase(objetivoDieta));
 	}
@@ -45,7 +45,7 @@ public class CategoriaController {
 		return ResponseEntity.ok(repository.findAllByRestricaoFinanceira(restricaoFinanceira));
 	}
 	
-	@GetMapping("/{restricaoSaude}")
+	@GetMapping("/buscarporRestricaoSaude/{restricaoSaude}")
 	public ResponseEntity<List<Categoria>> getByRestricaoSaude (@PathVariable String restricaoSaude){
 		return ResponseEntity.ok(repository.findAllByRestricaoSaudeContainingIgnoreCase(restricaoSaude));
 	}
