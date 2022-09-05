@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "981a5c36-e1ef-476b-b441-3a37a3a2758c",
+		"name": "Categoria (Grupo de Dieta)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dieta para Diabéticos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"objetivoDieta\": \"emagrecer\",\r\n  \"restricaoSaude\": \"Alergia a Glúten\",\r\n  \"restricaoFinanceira\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/postarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"postarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta para Hipertensos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"objetivoDieta\": \"manutenção do peso\",\r\n  \"restricaoSaude\": \"Nenhuma\",\r\n  \"restricaoFinanceira\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/postarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"postarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Dieta - Alergia Leite",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idCategoria\": \"{{idCategoria_PUT}}\",\r\n  \"objetivoDieta\": \"manutenção do peso\",\r\n  \"restricaoSaude\": \"Alergia à Frutos do mar\",\r\n  \"restricaoFinanceira\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/alterarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"alterarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL (Categoria)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/all",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/buscarporID/{{idCategoria_GET}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"buscarporID",
+						"{{idCategoria_GET}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By restricaoSaude (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/buscarporRestricaoSaude/{{restricaoSaude}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"buscarporRestricaoSaude",
+						"{{restricaoSaude}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By objetivoDieta (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/buscarporObjetivoDieta/{{objetivoDieta}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"buscarporObjetivoDieta",
+						"{{objetivoDieta}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By restricaoFinanceira (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/restricaofinanceira/{{restricaoFinanceira}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"restricaofinanceira",
+						"{{restricaoFinanceira}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Categoria",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/deletarcategoria/{{idCategoria_DELETE}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"deletarcategoria",
+						"{{idCategoria_DELETE}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:8081",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_PUT",
+			"value": "f97ed557-5a3b-4c66-a66d-50d59604f287",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_GET",
+			"value": "c5db133e-519d-4d54-9f3f-e7775b769684"
+		},
+		{
+			"key": "restricaoSaude",
+			"value": "Alergia a Glúten"
+		},
+		{
+			"key": "objetivoDieta",
+			"value": "emagrecer",
+			"type": "default"
+		},
+		{
+			"key": "restricaoFinanceira",
+			"value": "true",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_DELETE",
+			"value": "77be661a-930e-4403-89f2-b1b23c288534"
+		}
+	]
+}

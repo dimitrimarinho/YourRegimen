@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "6937d631-5f6b-4def-9b31-597191824fdb",
+		"name": "Financeiro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PagamentoEfetuado True",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pagamentoEfetuado\": true \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/financeiro/controlefinanceiro",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"controlefinanceiro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PagamentoEfetuado False",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pagamentoEfetuado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/financeiro/controlefinanceiro",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"controlefinanceiro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Atualizar Status Pagamento",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":\"{{idFinanceiro_PUT}}\",\r\n  \"pagamentoEfetuado\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/financeiro/alterarfinanceiro",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"alterarfinanceiro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL (Financeiro)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/financeiro/all",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID (Financeiro)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/financeiro/{{idFinanceiro_GET}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"{{idFinanceiro_GET}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar (Financeiro)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/financeiro/deletarregistro/{{idFinanceiro_DELETE}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"financeiro",
+						"deletarregistro",
+						"{{idFinanceiro_DELETE}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:8081",
+			"type": "default"
+		},
+		{
+			"key": "idFinanceiro_PUT",
+			"value": "2c28c53d-f90a-499b-a3c7-254a8c5b68fa",
+			"type": "default"
+		},
+		{
+			"key": "idFinanceiro_GET",
+			"value": "8b93a616-3e84-4499-ad7d-5c023433af1c",
+			"type": "default"
+		},
+		{
+			"key": "idFinanceiro_DELETE",
+			"value": "41393c07-ba30-41b2-8d9b-7f417b96e08c"
+		}
+	]
+}
