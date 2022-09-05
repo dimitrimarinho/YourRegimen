@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -28,12 +27,6 @@ public class Financeiro {
 	@ManyToOne
 	@JsonIgnoreProperties("financeiro")
 	private Admin admin;
-
-	public Financeiro(UUID idFinanceiro, @NotNull boolean pagamentoEfetuado, Admin admin) {
-		this.idFinanceiro = idFinanceiro;
-		this.pagamentoEfetuado = pagamentoEfetuado;
-		this.admin = admin;
-	}
 
 	public UUID getIdFinanceiro() {
 		return idFinanceiro;
