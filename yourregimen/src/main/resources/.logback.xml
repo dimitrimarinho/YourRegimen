@@ -1,5 +1,0 @@
-<?xml-model href="logback.xsd"?>
-<configuration>
-    <logger name="httpclient" level="WARN" />
-</configuration>
- 
