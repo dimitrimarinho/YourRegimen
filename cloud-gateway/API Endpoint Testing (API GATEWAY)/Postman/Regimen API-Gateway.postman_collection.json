@@ -1,6 +1,10 @@
 {
 	"info": {
+<<<<<<< HEAD
 		"_postman_id": "f7600c53-b36a-4758-8dc5-cd92544f9830",
+=======
+		"_postman_id": "2f3a7848-f181-45ee-bd89-e89f41b7521f",
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 		"name": "Regimen API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -406,7 +410,11 @@
 	"variable": [
 		{
 			"key": "HOST",
+<<<<<<< HEAD
 			"value": "http://localhost:9191",
+=======
+			"value": "",
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 			"type": "default"
 		},
 		{

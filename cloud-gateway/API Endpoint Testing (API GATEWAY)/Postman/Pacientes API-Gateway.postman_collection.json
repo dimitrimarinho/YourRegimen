@@ -1,11 +1,16 @@
 {
 	"info": {
+<<<<<<< HEAD
 		"_postman_id": "2fcabf11-e8d0-499f-b078-60ea045eb34d",
+=======
+		"_postman_id": "5c4a6ff2-0cd3-4986-b0ff-6c23d19b676a",
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 		"name": "Pacientes API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
+<<<<<<< HEAD
 			"name": "Stefani Machado Oliveira",
 			"request": {
 				"auth": {
@@ -48,6 +53,8 @@
 			"response": []
 		},
 		{
+=======
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 			"name": "Isabela Piana",
 			"request": {
 				"auth": {
@@ -90,6 +97,51 @@
 			"response": []
 		},
 		{
+<<<<<<< HEAD
+=======
+			"name": "Stefani Machado Oliveira",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nomePaciente\": \"Stefani Machado Oliveira\",\r\n  \"loginPaciente\": \"stefanimachado\",\r\n  \"senhaPaciente\": \"senhadieta1234\",\r\n  \"altura\": 1.90,\r\n  \"peso\": 70,\r\n  \"maxCalories\": 2300,\r\n  \"minCalories\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/pacientes/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"pacientes",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 			"name": "Dimitri Santana Marinho",
 			"request": {
 				"auth": {
@@ -338,7 +390,11 @@
 	"variable": [
 		{
 			"key": "HOST",
+<<<<<<< HEAD
 			"value": "http://localhost:9191",
+=======
+			"value": "",
+>>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
 			"type": "default"
 		},
 		{
