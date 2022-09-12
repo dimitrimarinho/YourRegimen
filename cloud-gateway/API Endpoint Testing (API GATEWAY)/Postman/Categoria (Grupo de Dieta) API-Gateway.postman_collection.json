@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5624dcb4-1eae-4f2c-ab4c-05927e4681cf",
+		"_postman_id": "2de507ca-e47d-4707-ad0c-a3522d956a88",
 		"name": "Categoria (Grupo de Dieta) API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -415,7 +415,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "",
+			"value": "http://localhost:9191",
 			"type": "default"
 		},
 		{
