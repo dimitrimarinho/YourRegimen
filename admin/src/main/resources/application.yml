@@ -1,17 +1,16 @@
-spring:
-  application:
-    name: admin
-
-  cloud:
-    config:
-      uri: http://localhost:8888
+server:
+  port: 8081
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
+    service-url: 
       defaultZone: http://localhost:8763/eureka
-  instance:
-    hostname: localhost
+      
+spring:
+  config:
+    import: configserver:http://localhost:8888
+  application:
+    name: 'admin'
 
