@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c48171ba-c118-4672-8270-b93fd9e7f7c3",
+		"_postman_id": "6f0e62f1-68ea-4906-ad79-b3bd52296232",
 		"name": "Financeiro API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -267,7 +267,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "",
+			"value": "http://localhost:9191",
 			"type": "default"
 		},
 		{
