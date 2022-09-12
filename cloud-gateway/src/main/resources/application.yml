@@ -1,28 +1,11 @@
-server:
-  port: 9191
-
 spring:
   application:
     name: API-GATEWAY
-  cloud:
-    gateway:
-      routes:
-        - id: ADMIN
-          uri: lb://ADMIN
-          predicates:
-            - Path=/usuarios/**     
-        - id: DIET
-          uri: lb://DIET
-          predicates:
-            - Path=/service-diet/**
-        - id: FINANCE
-          uri: lb://FINANCE
-          predicates:
-            - Path=/financeiro/**
-        - id: PACIENT
-          uri: lb://PACIENT
-          predicates:
-            - Path=/pacientes/**
+
+cloud:
+    config:
+      uri: http://localhost:8888
+
             
 eureka:
   client:

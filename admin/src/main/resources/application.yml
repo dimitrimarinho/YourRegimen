@@ -2,6 +2,10 @@ spring:
   application:
     name: admin
 
+  cloud:
+    config:
+      uri: http://localhost:8888
+
 eureka:
   client:
     register-with-eureka: true
@@ -10,3 +14,4 @@ eureka:
       defaultZone: http://localhost:8763/eureka
   instance:
     hostname: localhost
+
