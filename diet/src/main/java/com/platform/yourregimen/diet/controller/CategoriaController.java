@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.platform.yourregimen.diet.model.Categoria;
 import com.platform.yourregimen.diet.repository.CategoriaRepository;
 
-@RestController("/categoria")
+@RestController
+@RequestMapping("/service-diet/categoria")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
 	
