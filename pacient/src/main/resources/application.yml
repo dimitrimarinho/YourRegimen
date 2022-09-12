@@ -1,7 +1,9 @@
+server:
+  port: 8083
+
 spring:
   application:
     name: pacient
-
 
 eureka:
   client:
@@ -11,4 +13,3 @@ eureka:
       defaultZone: http://localhost:8763/eureka
   instance:
     hostname: localhost
-

@@ -1,10 +1,9 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: admin
-
-  cloud:
-    config:
-      uri: http://localhost:8888
 
 eureka:
   client:
@@ -14,4 +13,3 @@ eureka:
       defaultZone: http://localhost:8763/eureka
   instance:
     hostname: localhost
-
