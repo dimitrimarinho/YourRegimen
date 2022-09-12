@@ -11,10 +11,14 @@ spring:
           uri: lb://ADMIN
           predicates:
             - Path=/usuarios/**
-        - id: DIET
-          uri: lb://DIET
+        - id: CATEGORIA
+          uri: lb://CATEGORIA
           predicates:
-            - Path=/categoria/**
+            - Path=/categoria/**           
+        - id: REGIMEN
+          uri: lb://REGIMEN
+          predicates:
+            - Path=/regimen/**
         - id: FINANCE
           uri: lb://FINANCE
           predicates:

@@ -25,7 +25,7 @@ import com.platform.yourregimen.diet.model.Regimen;
 import com.platform.yourregimen.diet.repository.RegimenRepository;
 import com.platform.yourregimen.diet.service.RegimenService;
 
-@RestController
+@RestController("/regimen")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RegimenController {
 
@@ -35,12 +35,12 @@ public class RegimenController {
 	@Autowired
 	private RegimenService service;
 
-	@GetMapping("/regimen")
+	@GetMapping("/getall")
 	public ResponseEntity<List<Regimen>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("regimen/infoApi")
+	@GetMapping("/infoApi")
 	String ConectarApi(String inputFoods) throws IOException, InterruptedException {
 		String foodsSearch = URLEncoder.encode(inputFoods, StandardCharsets.UTF_8);
 		service.TranslateApi(foodsSearch);
@@ -57,7 +57,7 @@ public class RegimenController {
 		return resp;		
 	}
 	
-	@GetMapping("/regimen/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Regimen> getById(@PathVariable UUID id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
@@ -68,17 +68,17 @@ public class RegimenController {
 		return ResponseEntity.ok(repository.findAllByRegimenNameContainingIgnoreCase(regimenName));
 	}
 	
-	@PostMapping(value = "/regimen")
+	@PostMapping(value = "/")
 	public ResponseEntity <Regimen> post(@Valid @RequestBody Regimen regimen){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(regimen));
 	}
 	
-	@PutMapping(value = "/regimen") 
+	@PutMapping(value = "/") 
 	public ResponseEntity <Regimen> put (@Valid @RequestBody Regimen regimen){
 		return ResponseEntity.ok(repository.save(regimen));
 	}
 	
-	@DeleteMapping(value="/regimen/{id}")
+	@DeleteMapping(value="/delete/{id}")
 	public void delete (@PathVariable UUID id) {
 		repository.deleteById(id);
 	}

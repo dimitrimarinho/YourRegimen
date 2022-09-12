@@ -8,8 +8,8 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dailycodebuffer</groupId>
-	<artifactId>cloud-gateway</artifactId>
+	<groupId>com.platform.yourregimen.cloud-gateway</groupId>
+	<artifactId>admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cloud-gateway</name>
 	<description>cloud-gateway</description>
