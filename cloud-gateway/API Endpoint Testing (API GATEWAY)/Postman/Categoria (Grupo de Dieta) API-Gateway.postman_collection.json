@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "5624dcb4-1eae-4f2c-ab4c-05927e4681cf",
+		"name": "Categoria (Grupo de Dieta) API-Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dieta para Diabéticos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"objetivoDieta\": \"emagrecer\",\r\n  \"restricaoSaude\": \"Alergia a Glúten\",\r\n  \"restricaoFinanceira\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/postarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"postarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dieta para Hipertensos",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"objetivoDieta\": \"manutenção do peso\",\r\n  \"restricaoSaude\": \"Nenhuma\",\r\n  \"restricaoFinanceira\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/postarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"postarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Dieta - Alergia Leite",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idCategoria\": \"{{idCategoria_PUT}}\",\r\n  \"objetivoDieta\": \"manutenção do peso\",\r\n  \"restricaoSaude\": \"Alergia à Frutos do mar\",\r\n  \"restricaoFinanceira\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/alterarcategoria",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"alterarcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL (Categoria)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/all",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/getByid/{{idCategoria_GET}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"getByid",
+						"{{idCategoria_GET}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By restricaoSaude (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/getByrestricaoSaude/{{restricaoSaude}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"getByrestricaoSaude",
+						"{{restricaoSaude}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By objetivoDieta (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/getByobjetivo/{{objetivoDieta}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"getByobjetivo",
+						"{{objetivoDieta}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET By restricaoFinanceira (Categoria)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/restricaofinanceira/{{restricaoFinanceira}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"restricaofinanceira",
+						"{{restricaoFinanceira}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Categoria",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/service-diet/categoria/deletarcategoria/{{idCategoria_DELETE}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"service-diet",
+						"categoria",
+						"deletarcategoria",
+						"{{idCategoria_DELETE}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_PUT",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_GET",
+			"value": ""
+		},
+		{
+			"key": "restricaoSaude",
+			"value": ""
+		},
+		{
+			"key": "objetivoDieta",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "restricaoFinanceira",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idCategoria_DELETE",
+			"value": ""
+		}
+	]
+}
