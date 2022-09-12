@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2f3a7848-f181-45ee-bd89-e89f41b7521f",
+		"_postman_id": "f7600c53-b36a-4758-8dc5-cd92544f9830",
 		"name": "Regimen API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -406,7 +406,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "",
+			"value": "http://localhost:9191",
 			"type": "default"
 		},
 		{

@@ -1,52 +1,10 @@
 {
 	"info": {
-		"_postman_id": "5c4a6ff2-0cd3-4986-b0ff-6c23d19b676a",
+		"_postman_id": "2fcabf11-e8d0-499f-b078-60ea045eb34d",
 		"name": "Pacientes API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Isabela Piana",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "root",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "root",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nomePaciente\": \"Isabela Piana\",\r\n  \"loginPaciente\": \"isabelapiana\",\r\n  \"senhaPaciente\": \"disneyprincessgeneration21\",\r\n  \"altura\": 1.60,\r\n  \"peso\": 55,\r\n  \"maxCalories\": 2200,\r\n  \"minCalories\": 1900\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}/pacientes/cadastrar",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"pacientes",
-						"cadastrar"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "Stefani Machado Oliveira",
 			"request": {
@@ -70,6 +28,48 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"nomePaciente\": \"Stefani Machado Oliveira\",\r\n  \"loginPaciente\": \"stefanimachado\",\r\n  \"senhaPaciente\": \"senhadieta1234\",\r\n  \"altura\": 1.90,\r\n  \"peso\": 70,\r\n  \"maxCalories\": 2300,\r\n  \"minCalories\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/pacientes/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"pacientes",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Isabela Piana",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nomePaciente\": \"Isabela Piana\",\r\n  \"loginPaciente\": \"isabelapiana\",\r\n  \"senhaPaciente\": \"disneyprincessgeneration21\",\r\n  \"altura\": 1.60,\r\n  \"peso\": 55,\r\n  \"maxCalories\": 2200,\r\n  \"minCalories\": 1900\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -338,7 +338,7 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "",
+			"value": "http://localhost:9191",
 			"type": "default"
 		},
 		{
