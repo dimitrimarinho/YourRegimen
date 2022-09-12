@@ -1,5 +1,5 @@
 server:
-  port: 8086
+  port: 8087
 
 eureka:
   client:
@@ -7,9 +7,12 @@ eureka:
     fetch-registry: true
     service-url: 
       defaultZone: http://localhost:8763/eureka
+  instance:
+    hostname: localhost
       
 spring:
   config:
     import: configserver:http://localhost:8888
   application:
     name: 'diet'
+
