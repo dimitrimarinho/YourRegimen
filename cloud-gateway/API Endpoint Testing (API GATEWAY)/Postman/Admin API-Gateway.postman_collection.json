@@ -1,10 +1,14 @@
 {
 	"info": {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"_postman_id": "4cf4aa5d-7967-4f6c-845c-0e570ec029b3",
 =======
 		"_postman_id": "9f6bb35c-4abc-4245-8b4d-dc742ae0d756",
 >>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
+=======
+		"_postman_id": "4cf4aa5d-7967-4f6c-845c-0e570ec029b3",
+>>>>>>> 3f32839 (Adding Postman Import Files (Endpoint Tests))
 		"name": "Admin API-Gateway",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -343,10 +347,14 @@
 		{
 			"key": "HOST",
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"value": "http://localhost:9191",
 =======
 			"value": "",
 >>>>>>> 26f89ac (Adding Postman Import Files (Endpoint Tests))
+=======
+			"value": "http://localhost:9191",
+>>>>>>> 3f32839 (Adding Postman Import Files (Endpoint Tests))
 			"type": "default"
 		},
 		{
