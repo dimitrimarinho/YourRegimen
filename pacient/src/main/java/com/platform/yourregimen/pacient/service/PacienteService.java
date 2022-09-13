@@ -69,10 +69,6 @@ public class PacienteService {
     	String estrutura = email+": "+password;
     	byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
     	return "Basic "+new String(estruturaBase64);
-    }
+    }       
 
-}
-
-	
-
-		
+}		

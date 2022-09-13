@@ -26,9 +26,27 @@ spring:
             
 eureka:
   client:
+    healthcheck:
+      enabled: true
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8763/eureka
   instance:
     hostname: localhost
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    auditevents:
+      enabled: true
+    info:
+      enabled: true
+  health:
+    defaults:
+      enabled: true

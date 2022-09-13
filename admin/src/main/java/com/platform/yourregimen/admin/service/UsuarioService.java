@@ -77,4 +77,5 @@ public class UsuarioService {
     	byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
     	return "Basic "+new String(estruturaBase64);
     }
+    
 }
