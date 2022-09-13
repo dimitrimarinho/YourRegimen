@@ -46,24 +46,24 @@ public class PacienteController {
 	}
 	
 	@PostMapping("/logar")
-	public ResponseEntity<PacienteLogin> loginAdmin (@RequestBody Optional<PacienteLogin> user){
-		return service.autenticarPaciente(user)
+	public ResponseEntity<PacienteLogin> autenticationUsuario(@RequestBody Optional<PacienteLogin> usuario) {		
+		return service.logarUsuario(usuario)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
-	
+
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Paciente> cadastroPaciente (@Valid @RequestBody Paciente paciente){
-		return service.cadastroPaciente(paciente)
-				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+	public ResponseEntity<Paciente> postUsuario(@Valid @RequestBody Paciente usuario) {		
+		return service.cadastrarUsuario(usuario)
+			.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());		
 	}
 	
 	@PutMapping("/atualizar")
-	public ResponseEntity<Paciente> atualizarPaciente (@Valid @RequestBody Paciente paciente){
-		return service.atualizarPaciente(paciente)
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	public ResponseEntity<Paciente> putUsuario(@Valid @RequestBody Paciente usuario){		
+		return service.atualizarUsuario(usuario)
+			.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
 	@DeleteMapping("/{id}")
