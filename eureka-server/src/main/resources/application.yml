@@ -13,3 +13,19 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   password: ${EUREKA_USER_PASSWORD:password}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    auditevents:
+      enabled: true
+    info:
+      enabled: true
+  health:
+    defaults:
+      enabled: true
