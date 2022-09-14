@@ -5,10 +5,10 @@ import { Box } from '@mui/material';
 function Navbar() {
     return (
         <>
-            <AppBar position="sticky" className='back'>
-                <Toolbar variant="dense">
-                    <Grid container justifyContent="space-between">
-                        <Box display="flex" justifyContent="flex-start" alignItems="center">
+            <AppBar position="sticky" >
+                <Toolbar variant="dense" className='backF2'>
+                    <Grid container justifyContent="space-between" >
+                        <Box display="flex" justifyContent="flex-start" alignItems="center" >
                             <img src="https://i.imgur.com/LwF0S1v.png" title="Logo YourRegimen" width="230px" />
                         </Box>
 
@@ -25,12 +25,7 @@ function Navbar() {
                             </Box>
                             <Box paddingX={3}>
                                 <Typography variant="h6" color="inherit">
-                                    Solicite sua dieta
-                                </Typography>
-                            </Box>
-                            <Box paddingX={3}>
-                                <Typography variant="h6" color="inherit">
-                                    Logout
+                                    Sair
                                 </Typography>
                             </Box>
                         </Box>

@@ -1,28 +1,26 @@
 import React from 'react';
-import {Typography, Grid, Button} from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Typography, Grid, Button } from '@material-ui/core';
+import { Box } from '@mui/material';
 import './Home.css';
 
 function Home() {
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center" className='backHome'>
-                <Grid alignItems="center" item xs={6}>
-                    <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" style={{ color: "white", fontWeight: "bold" }}>Seja bem vindo(a)!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" style={{ color: "white", fontWeight: "bold" }}>expresse aqui os seus pensamentos e opiniões!</Typography>
-                    </Box>
-                    <Box display="flex" justifyContent="center">
-                        <Box marginRight={1}>
+            <Grid xs={12} justifyContent="center" alignItems="center">
+                <Box className='imgHome' flexDirection="column" justifyContent="center" alignItems="center" display='flex' paddingX={2}>
+                    <Box flexDirection="column" justifyContent="center" alignItems="center" display='flex'>
+                        <Box marginBottom={2}>
+                        <Button className="botaoH" variant="outlined">
+                            Sou nutricionista
+                        </Button>    
                         </Box>
-                        <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#d81313c9", color: "white" }}>Ver Postagens</Button>
+                        <Box marginTop={2}>
+                            <Button className="botaoH" variant="outlined">
+                                Quero uma dieta
+                            </Button>
+                        </Box>
                     </Box>
-                </Grid>
-                <Grid item xs={6} >
-                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
-                </Grid>
-                <Grid xs={12} style={{ backgroundColor: "white" }}>
-                </Grid>
+                </Box>
             </Grid>
         </>
     );

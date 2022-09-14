@@ -3,14 +3,20 @@
     text-align: center;
 }
 
-.img{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
+.imgHome{
+    background-image: url(https://www.feitodeiridium.com.br/wp-content/uploads/2018/05/prato-colorido-1200x600.jpg) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    height: 500px !important;
 }
 
-.backHome{
-    background-color: #f2c77750;
+.botaoH{
+    background-color: #F27127 !important;
+    opacity: 0.75!important;
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Roboto', sans-serif !important;
 }
+
+
 
