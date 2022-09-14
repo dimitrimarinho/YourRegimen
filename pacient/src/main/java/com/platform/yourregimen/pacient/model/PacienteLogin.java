@@ -22,6 +22,17 @@ public class PacienteLogin {
 	
 	private String token;
 
+	public PacienteLogin(UUID id, String nome, String usuario, String senha, String token) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.token = token;
+	}
+
+	public PacienteLogin() {
+	}
+
 	public UUID getId() {
 		return id;
 	}

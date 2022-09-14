@@ -22,6 +22,17 @@ public class AdminLogin {
 	
 	private String token;
 
+	public AdminLogin(UUID id, String nome, String usuario, String senha, String token) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.token = token;
+	}
+
+	public AdminLogin() {
+	}
+
 	public UUID getId() {
 		return id;
 	}

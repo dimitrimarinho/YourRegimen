@@ -49,7 +49,7 @@ public class AdminController {
 
 	@PostMapping("/logar")
 	public ResponseEntity<AdminLogin> autenticationUsuario(@RequestBody Optional<AdminLogin> usuario) {		
-		return service.logarUsuario(usuario)
+		return service.autenticarUsuario(usuario)
 			.map(resp -> ResponseEntity.ok(resp))
 			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}

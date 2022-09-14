@@ -24,71 +24,80 @@ public class PacienteService {
 	public Optional<Paciente> cadastrarUsuario(Paciente usuario) {
 
 		if (usuarioRepository.findByLoginPaciente(usuario.getLoginPaciente()).isPresent())
+
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
 		usuario.setSenhaPaciente(criptografarSenha(usuario.getSenhaPaciente()));
 
 		return Optional.of(usuarioRepository.save(usuario));
+
 	}
 
 	public Optional<Paciente> atualizarUsuario(Paciente usuario) {
 
 		if (usuarioRepository.findById(usuario.getIdPaciente()).isPresent()) {
-			Optional<Paciente> buscaUsuario = usuarioRepository.findByLoginPaciente(usuario.getLoginPaciente());
 
-			if (buscaUsuario.isPresent()) {				
-				if (buscaUsuario.get().getIdPaciente() != usuario.getIdPaciente())
-					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
+			Optional<Paciente> buscaLoginUsuario = usuarioRepository.findByLoginPaciente(usuario.getLoginPaciente());
+
+			if (buscaLoginUsuario.isPresent()) {				
+				if (buscaLoginUsuario.get().getIdPaciente() != usuario.getIdPaciente())
+					throw new ResponseStatusException(
+							HttpStatus.BAD_REQUEST, "O Usuário já existe!", null);
 			}
-			
+
 			usuario.setSenhaPaciente(criptografarSenha(usuario.getSenhaPaciente()));
 
 			return Optional.of(usuarioRepository.save(usuario));
 		} 
-			
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado!", null);		
-	}	
-	
-	public Optional<PacienteLogin> logarUsuario(Optional<PacienteLogin> usuarioLogin) {
-		
+
+		return Optional.empty();
+	}
+
+	public Optional<PacienteLogin> autenticarUsuario(Optional<PacienteLogin> usuarioLogin) {
+
 		Optional<Paciente> usuario = usuarioRepository.findByLoginPaciente(usuarioLogin.get().getUsuario());
 
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenhaPaciente())) {
-
-				usuarioLogin.get().setId(usuario.get().getIdPaciente());				
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setId(usuario.get().getIdPaciente());
 				usuarioLogin.get().setNome(usuario.get().getNomePaciente());
 				usuarioLogin.get().setUsuario(usuario.get().getLoginPaciente());
 				usuarioLogin.get().setSenha(usuario.get().getSenhaPaciente());
-				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+				
 
 				return usuarioLogin;
 
 			}
-		}		
-		
-		throw new ResponseStatusException(
-				HttpStatus.UNAUTHORIZED, "Usuário ou senha inválidos!", null);
+		}	
+
+		return Optional.empty();
+
 	}
-	
+
 	private String criptografarSenha(String senha) {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String senhaEncoder = encoder.encode(senha);
 
-		return senhaEncoder;
+		return encoder.encode(senha);
+
 	}
-	
-	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
+
+	private boolean compararSenhas(String senhaDigitada, String senhaBD) {
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-		return encoder.matches(senhaDigitada, senhaBanco);		
-	}
-	
-	private String gerarBasicToken(String email, String password) {
-		String estrutura = email + ":" + password;
-		byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
-		return "Basic " + new String(estruturaBase64);
+
+		return encoder.matches(senhaDigitada, senhaBD);
+
 	}
 
-}	
+	private String gerarBasicToken(String email, String password) {
+
+		String tokenBase = email + ":" + password;
+		byte[] tokenBase64 = Base64.encodeBase64(tokenBase.getBytes(Charset.forName("US-ASCII")));
+		return "Basic " + new String(tokenBase64);
+
+	}
+
+
+}
