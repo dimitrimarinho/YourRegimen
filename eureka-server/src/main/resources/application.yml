@@ -1,31 +1,11 @@
-server:
-  port: ${PORT:5000}
-security:
-  user:
-    password: ${eureka.password}
-
+---
+spring:
+  profiles: peer
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${APP_NAME}.herokuapp.com
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  password: ${EUREKA_USER_PASSWORD:password}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    auditevents:
-      enabled: true
-    info:
-      enabled: true
-  health:
-    defaults:
-      enabled: true
+      defaultZone: ${EUREKA_PEER_URL}/eureka/
