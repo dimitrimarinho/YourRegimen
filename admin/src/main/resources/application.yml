@@ -2,7 +2,17 @@ spring:
   application:
     name: "microservice-admin"
   profiles:
-    active: dev
+    active: prod
+    
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  packagesToScan: com.platform.yourregimen.admin.controller
 
 management:
   endpoints:
