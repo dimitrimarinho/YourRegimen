@@ -1,0 +1,21 @@
+.back{
+    background: linear-gradient(36deg, #590202 30%, #d81313c9 70%);
+}
+
+.backF2{
+    background-color: #590202;
+}
+
+.text{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.social{
+    font-size: 50px !important;
+    margin: 10px;
+    color: #F2C777 !important;
+    transition: transform 1s !important;
+}
