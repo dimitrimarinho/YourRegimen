@@ -95,6 +95,5 @@ public class UsuarioService {
 		return "Basic " + new String(tokenBase64);
 
 	}
-
-
+	
 }
