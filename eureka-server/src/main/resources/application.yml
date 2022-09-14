@@ -1,25 +1,3 @@
-server:
-  port: 8763
-
-eureka:
-  client:
-    fetch-registry: false
-    register-with-eureka: false
-    service-url:
-      defaultZone: http://localhost:8763/eureka
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    auditevents:
-      enabled: true
-    info:
-      enabled: true
-  health:
-    defaults:
-      enabled: true
+spring:
+  profiles:
+    active: dev

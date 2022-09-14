@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: http://localhost:8763/eureka
+  instance:
+    hostname: localhost
+      
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: configserver:http://localhost:8888
+  application:
+    name: 'admin'
+ 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    auditevents:
+      enabled: true
+    info:
+      enabled: true
+  health:
+    defaults:
+      enabled: true
