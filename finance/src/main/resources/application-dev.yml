@@ -1,0 +1,20 @@
+server:
+  port: 8086
+ 
+spring:
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      uri: http://localhost:8888
+  application:
+    name: 'finance' 
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: http://localhost:8763/eureka    
+  instance:
+    hostname: localhost

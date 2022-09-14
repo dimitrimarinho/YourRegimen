@@ -8,10 +8,10 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.platform.yourregimen.eureka</groupId>
-	<artifactId>eureka-server-1</artifactId>
+	<groupId>com.platform.yourregimen.configserver</groupId>
+	<artifactId>configserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eureka-server-1</name>
+	<name>configserver</name>
 	<description>Spring Boot Microservice </description>
 	<properties>
 		<java.version>1.8</java.version>
