@@ -11,7 +11,7 @@ function CadastroUsuario(){
     <Grid alignItems="center" xs={12} >
         <Box width='100vw' height='100vh' className="bgCadastroFoto" display={'flex'} alignItems='center' flexDirection="row">
             <Paper style={{ padding: '32px 48px', borderRadius: '16px', maxWidth: "480px" }} elevation={12} className="paperCadastro">
-                <Box display="flex" justifyContent="center" className='boxJaTemConta'>
+                <Box display="flex" justifyContent="center" className='boxJaTemConta' flexDirection='row'>
                     <Box marginRight={1}>
                         <Typography variant="subtitle1" gutterBottom align="center">
                             Já tem uma conta?
