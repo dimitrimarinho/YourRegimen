@@ -7,8 +7,6 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-  application:
-    name: 'finance' 
     
 eureka:
   client:
@@ -18,19 +16,3 @@ eureka:
       defaultZone: http://localhost:8763/eureka    
   instance:
     hostname: localhost
- 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    auditevents:
-      enabled: true
-    info:
-      enabled: true
-  health:
-    defaults:
-      enabled: true
