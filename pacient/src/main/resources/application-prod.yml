@@ -1,26 +1,6 @@
 server:
   port: 8083
   
-spring:
-  datasource:
-    url: jdbc:postgresql://database-1.co3n5hj6lnhk.sa-east-1.rds.amazonaws.com:5432/microservice-pacient-group2
-    username: postgres
-    password: postgres153227%
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    database-platform: postgres
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: Brazil/East
-
 eureka:
   client:
     register-with-eureka: true
@@ -29,3 +9,9 @@ eureka:
       defaultZone: http://localhost:8763/eureka
   instance:
     hostname: localhost
+    
+spring:
+  config:
+    import: configserver:http://localhost:8888
+  application:
+    name: 'pacient'
