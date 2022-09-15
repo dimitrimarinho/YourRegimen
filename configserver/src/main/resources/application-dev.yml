@@ -9,19 +9,3 @@ spring:
         git:
           uri: https://github.com/isabelapiana/microservice-repo
           search-paths: diet, finance, admin, pacient
-          
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-    auditevents:
-      enabled: true
-    info:
-      enabled: true
-  health:
-    defaults:
-      enabled: true
