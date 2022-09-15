@@ -17,8 +17,8 @@ function Login(){
                     <Typography variant="h3" gutterBottom  align="center" component="h3" className="texto">
                         Bem vindo!
                     </Typography>
-                    <TextField id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth required/>
-                        <TextField id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth required/>
+                    <TextField id='usuario' label='Usuário de acesso' variant='outlined' name='usuario' margin='normal' fullWidth required/>
+                        <TextField id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password'fullWidth required/>
                     <Box marginTop={2} textAlign="center">
                        <Link to="/home"></Link>
                             <Button type='submit' className="botao">
