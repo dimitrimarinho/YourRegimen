@@ -2,3 +2,11 @@
     background-color: #590202;
 }
 
+.MenuNavbar{
+    color: white;
+}
+
+.MenuNavbar:hover{
+    color: #F27127 !important;
+    transform: scale(1.1) !important;
+}

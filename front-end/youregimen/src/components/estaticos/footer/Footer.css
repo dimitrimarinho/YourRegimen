@@ -15,7 +15,12 @@
 
 .social{
     font-size: 50px !important;
-    margin: 10px;
+    margin: 20px;
     color: #F2C777 !important;
     transition: transform 1s !important;
+}
+
+.social:hover {
+    transform: scale(1.2);
+    color: #F2C777 !important;
 }

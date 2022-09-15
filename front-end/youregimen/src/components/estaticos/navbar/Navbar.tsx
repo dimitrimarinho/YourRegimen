@@ -12,9 +12,9 @@ function Navbar() {
                             <img src="https://i.imgur.com/LwF0S1v.png" title="Logo YourRegimen" width="230px" />
                         </Box>
 
-                        <Box display="flex" justifyContent="center" alignItems="center">
-                            <Box paddingX={3}>
-                                <Typography variant="h6" color="inherit">
+                        <Box display="flex" justifyContent="center" alignItems="center" >
+                            <Box paddingX={3} >
+                                <Typography variant="h6" color="inherit" >
                                     Home
                                 </Typography>
                             </Box>
