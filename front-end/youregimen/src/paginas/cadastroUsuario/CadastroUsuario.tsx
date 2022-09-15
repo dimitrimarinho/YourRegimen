@@ -25,19 +25,19 @@ function CadastroUsuario(){
                 </Box >
                 <Box className="boxCadastro" flexDirection="row">
                     <form >
-                        <Box>
+                      
                         <Typography variant='h3' gutterBottom color='primary' component='h3' align='center' className='paperCadastroTitulo'>Cadastrar</Typography>
                         <TextField  id='nome' label='Nome completo' variant='outlined' name='nomeUsuario' margin='normal' fullWidth className="tfCadastro" required/>
                         <TextField id='usuario' label='E-mail' variant='outlined' name='loginUsuario' margin='normal' fullWidth className="tfCadastro" required/>
                         <TextField  id='senha' label='Senha ' variant='outlined' name='senhaUsuario' margin='normal' type='password' fullWidth className="tfCadastro" required/>
                         <TextField  id='confirmarSenha' label='Confirme a sua senha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth className="tfCadastro" required />
-                        </Box>
-                        <Box>
+                       
+                        
                         <TextField  id='altura' label='Altura' variant='outlined' name='nomeUsuario' margin='normal' fullWidth className="tfCadastro" required/>
                         <TextField  id='peso' label='Peso(kg)' variant='outlined' name='nomeUsuario' margin='normal' fullWidth className="tfCadastro" required/>
                         <TextField  id='maxCalorias' label='Quantidade máxima de calorias necessárias' variant='outlined' name='nomeUsuario' margin='normal' fullWidth className="tfCadastro" required/>
                         <TextField  id='minCalorias' label='Quantidade mínima de calorias necessárias' variant='outlined' name='nomeUsuario' margin='normal' fullWidth className="tfCadastro" required/>
-                        </Box>
+                        
                         <Box marginTop={2} textAlign='center'>
                             <Button type='submit' variant='contained' color='primary' fullWidth className='btnCadastrar'>
                                 Cadastrar
