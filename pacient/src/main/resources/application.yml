@@ -2,7 +2,7 @@ spring:
   application:
     name: 'microservice-pacient'
   profiles:
-    active: dev
+    active: prod
 
 springdoc:
   api-docs:
