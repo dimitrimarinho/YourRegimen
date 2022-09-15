@@ -1,0 +1,40 @@
+
+.botao{
+    background-color: #f2c777
+    !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    border-color: #f2c777 !important;
+    width: 100%;
+    height: 48px;
+    transition: 0.4s;
+}
+
+.botao:hover{
+    background-color:#f27127!important;
+}
+
+.text-decorator-none{
+    text-decoration: none;
+}
+.texto{
+    font-weight: bold !important;
+    color: #d90404 !important;
+}
+.imagem{
+    background-image: url(https://th.bing.com/th/id/OIP.wN_81BkgNQ4qKDD4436GoAHaEo?pid=ImgDet&rs=1);
+    background-repeat: no-repeat;
+    width: 100vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.cursor{
+    cursor: pointer;
+    font-weight: bold !important;
+}
+.login-c{
+  opacity:100%;
+  
+}
