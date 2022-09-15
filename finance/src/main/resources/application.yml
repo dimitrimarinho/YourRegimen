@@ -2,7 +2,7 @@ spring:
   application:
     name: 'microservice-finance' 
   profiles:
-    active: dev
+    active: prod
 
 springdoc:
   api-docs:
