@@ -19,60 +19,85 @@ import com.platform.yourregimen.pacient.repository.PacienteRepository;
 public class PacienteService {
 
 	@Autowired
-	private PacienteRepository repository;
-	
-	public Optional<Paciente> cadastroPaciente(Paciente paciente) {
-		if (repository.findByLoginPaciente(paciente.getLoginPaciente()).isPresent())
+	private PacienteRepository usuarioRepository;
+
+	public Optional<Paciente> cadastrarUsuario(Paciente usuario) {
+
+		if (usuarioRepository.findByLoginPaciente(usuario.getLoginPaciente()).isPresent())
+
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
-		paciente.setSenhaPaciente(criptografarSenha(paciente.getSenhaPaciente()));
-		return Optional.of(repository.save(paciente));
+
+		usuario.setSenhaPaciente(criptografarSenha(usuario.getSenhaPaciente()));
+
+		return Optional.of(usuarioRepository.save(usuario));
+
 	}
 
-	public Optional<Paciente> atualizarPaciente(Paciente paciente) {
-		if (repository.findById(paciente.getIdPaciente()).isPresent()) {
-			Optional<Paciente> buscaLoginPaciente = repository.findByLoginPaciente(paciente.getLoginPaciente());
-			if (buscaLoginPaciente.get().getIdPaciente() != paciente.getIdPaciente()) {
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O usuário já existe!", null);
+	public Optional<Paciente> atualizarUsuario(Paciente usuario) {
+
+		if (usuarioRepository.findById(usuario.getIdPaciente()).isPresent()) {
+
+			Optional<Paciente> buscaLoginUsuario = usuarioRepository.findByLoginPaciente(usuario.getLoginPaciente());
+
+			if (buscaLoginUsuario.isPresent()) {				
+				if (buscaLoginUsuario.get().getIdPaciente() != usuario.getIdPaciente())
+					throw new ResponseStatusException(
+							HttpStatus.BAD_REQUEST, "O Usuário já existe!", null);
 			}
-			paciente.setSenhaPaciente(criptografarSenha(paciente.getSenhaPaciente()));
-			return Optional.of(repository.save(paciente));
-		}
+
+			usuario.setSenhaPaciente(criptografarSenha(usuario.getSenhaPaciente()));
+
+			return Optional.of(usuarioRepository.save(usuario));
+		} 
+
 		return Optional.empty();
 	}
-	
-	public Optional<PacienteLogin> autenticarPaciente(Optional<PacienteLogin>user){
-		Optional<Paciente> paciente = repository.findByLoginPaciente(user.get().getSenha());
-		if (paciente.isPresent()) {
-			if(compararSenhas(user.get().getSenha(), paciente.get().getSenhaPaciente())) {
-				user.get().setToken(gerarBasicToken(paciente.get().getLoginPaciente(), user.get().getSenha()));
-				user.get().setId(paciente.get().getIdPaciente());
-				user.get().setNome(paciente.get().getNomePaciente());
-				user.get().setUsuario(paciente.get().getLoginPaciente());
-				user.get().setSenha(paciente.get().getSenhaPaciente());
-				return user;
+
+	public Optional<PacienteLogin> autenticarUsuario(Optional<PacienteLogin> usuarioLogin) {
+
+		Optional<Paciente> usuario = usuarioRepository.findByLoginPaciente(usuarioLogin.get().getUsuario());
+
+		if (usuario.isPresent()) {
+			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenhaPaciente())) {
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setId(usuario.get().getIdPaciente());
+				usuarioLogin.get().setNome(usuario.get().getNomePaciente());
+				usuarioLogin.get().setUsuario(usuario.get().getLoginPaciente());
+				usuarioLogin.get().setSenha(usuario.get().getSenhaPaciente());
+				
+
+				return usuarioLogin;
+
 			}
-		}
+		}	
+
 		return Optional.empty();
+
 	}
-	
+
 	private String criptografarSenha(String senha) {
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 		return encoder.encode(senha);
+
 	}
-	
-	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
+
+	private boolean compararSenhas(String senhaDigitada, String senhaBD) {
+
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder.matches(senhaDigitada, senhaBanco);
+
+		return encoder.matches(senhaDigitada, senhaBD);
+
 	}
-	
-    private String gerarBasicToken(String email, String password) {
-    	String estrutura = email+": "+password;
-    	byte[] estruturaBase64 = Base64.encodeBase64(estrutura.getBytes(Charset.forName("US-ASCII")));
-    	return "Basic "+new String(estruturaBase64);
-    }
+
+	private String gerarBasicToken(String email, String password) {
+
+		String tokenBase = email + ":" + password;
+		byte[] tokenBase64 = Base64.encodeBase64(tokenBase.getBytes(Charset.forName("US-ASCII")));
+		return "Basic " + new String(tokenBase64);
+
+	}
+
 
 }
-
-	
-
-		
