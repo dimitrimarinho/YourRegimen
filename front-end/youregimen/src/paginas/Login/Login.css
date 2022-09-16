@@ -22,10 +22,13 @@
     color: #590202 !important;
 }
 
+.MuiBox-root {
+    padding: 0 !important;
+}
+
 .imagem {
     background-image: url(https://i.imgur.com/nIuACN6.jpeg);
     background-repeat: no-repeat;
-    width: 100vh;
     min-height: 100vh;
     background-size: cover;
     background-position: center;
@@ -40,10 +43,14 @@
     opacity: 100%;
 }
 
-.MuiFormLabel-root.Mui-focused{
+.MuiFormLabel-root.Mui-focused {
     color: #590202 !important;
 }
 
-.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #590202 !important;
+}
+
+.MuiPaper-root.login-c.MuiPaper-elevation1.MuiPaper-rounded {
+    margin-left: 10% !important;
 }

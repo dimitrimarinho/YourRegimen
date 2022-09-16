@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
-import './Footer.css'
 import { GitHub } from '@material-ui/icons';
+import './Footer.css'
 
 function Footer() {
     return (

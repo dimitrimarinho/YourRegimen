@@ -2,6 +2,10 @@
     background-color: #590202d7;
 }
 
+.MuiTypography-gutterBottom{
+    margin-bottom: 0px !important;
+}
+
 .backF2{
     background-color: #590202;
 }

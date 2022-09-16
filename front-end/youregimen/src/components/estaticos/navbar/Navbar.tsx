@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
+import './Navbar.css'
 
 function Navbar() {
     return (
@@ -14,17 +15,17 @@ function Navbar() {
 
                         <Box display="flex" justifyContent="center" alignItems="center" >
                             <Box paddingX={3} >
-                                <Typography variant="h6" color="inherit" >
+                                <Typography className="padding-left-navbar" variant="h6" color="inherit" >
                                     Home
                                 </Typography>
                             </Box>
                             <Box paddingX={3}>
-                                <Typography variant="h6" color="inherit">
+                                <Typography className="padding-left-navbar" variant="h6" color="inherit">
                                     Sobre nós
                                 </Typography>
                             </Box>
                             <Box paddingX={3}>
-                                <Typography variant="h6" color="inherit">
+                                <Typography className="padding-left-navbar" variant="h6" color="inherit">
                                     Sair
                                 </Typography>
                             </Box>

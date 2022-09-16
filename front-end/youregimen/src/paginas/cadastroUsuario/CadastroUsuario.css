@@ -1,4 +1,4 @@
-.bgCadastroFoto{
+.bgCadastroFoto {
     background-image: url('https://i.imgur.com/nIuACN6.jpeg');
     background-repeat: no-repeat;
     width: 100% !important;
@@ -7,35 +7,56 @@
     transform: scaleX(-1) scaleY(-1);
 }
 
-.boxCadastro{
-    display:flex;
+.boxCadastro {
+    position: relative !important;
+    max-height: 80% !important;
+    display: flex;
     justify-content: center;
     padding: 5% 5%;
-    transform: scaleX(-1) scaleY(-1) ;
+    transform: scaleX(-1) scaleY(-1);
 }
 
-.boxJaTemConta{
-    transform:  scaleX(-1) scaleY(-1);
+.boxJaTemConta {
+    transform: scaleX(-1) scaleY(-1);
     align-items: center;
 }
 
-.paperCadastro{
+.paperCadastro {
+    max-height: 68vh !important;
+    overflow-y: auto;
+    direction: rtl;
     border-radius: 16px !important;
-    width: 560px;
+    width: 500px;
     transform: translateX(64px) !important;
 }
 
-.paperCadastroTitulo{
-    font-weight: bold !important;
-    font-family: 'Roboto', sans-serif;
-    color:  #d90404 !important;
+/* Designing for scroll-bar */
+.paperCadastro::-webkit-scrollbar {
+    width: 8px;
+    max-height: 20vh !important;
 }
 
+/* Track */
+.paperCadastro::-webkit-scrollbar-track {
+    background: gainsboro;
+    border-radius: 16px;
+}
 
-.btnCadastrar{
+/* Handle */
+.paperCadastro::-webkit-scrollbar-thumb {
+    background: #590202;
+    border-radius: 5px;
+}
+
+.paperCadastroTitulo {
+    font-weight: bold !important;
+    font-family: 'Roboto', sans-serif;
+    color: #590202 !important;
+}
+
+.btnCadastrar {
     background: #f2c777 !important;
     font-weight: bold !important;
-    
 }
 
 .btnCadastrar:hover {
