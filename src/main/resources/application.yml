@@ -29,6 +29,3 @@ management:
   health:
     defaults:
       enabled: true
-
-server:
-  port: 8086
