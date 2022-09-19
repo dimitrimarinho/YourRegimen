@@ -1,9 +1,3 @@
-spring:
-  application:
-    name: 'microservice-finance' 
-  profiles:
-    active: prod
-
 springdoc:
   api-docs:
     path: /v3/api-docs
@@ -29,3 +23,38 @@ management:
   health:
     defaults:
       enabled: true
+
+server:
+  port: 8086
+
+spring:
+  application:
+    name: 'microservice-finance' 
+
+  datasource:
+    url: jdbc:postgresql://database-1.co3n5hj6lnhk.sa-east-1.rds.amazonaws.com:5432/microservice-finance-group2
+    username: postgres
+    password: postgres153227%
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: postgres
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Brazil/East
+ 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: http://localhost:8763/eureka    
+  instance:
+    hostname: localhost
