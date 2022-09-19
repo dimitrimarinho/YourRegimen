@@ -26,6 +26,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url: 
-      defaultZone: http://localhost:8763/eureka    
+      defaultZone: https://eureka-server-microservice.herokuapp.com/
   instance:
     hostname: localhost
