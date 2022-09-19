@@ -26,7 +26,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url: 
-      defaultZone: http://localhost:8763/eureka    
+      defaultZone: https://eureka-server-microservice.herokuapp.com:8763/eureka    
   instance:
     statusPageUrl: https://eureka-server-microservice.herokuapp.com//info
     healthCheckUrl: https://eureka-server-microservice.herokuapp.com/health
