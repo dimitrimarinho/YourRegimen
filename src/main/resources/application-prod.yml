@@ -28,6 +28,4 @@ eureka:
     service-url: 
       defaultZone: https://eureka-server-microservice.herokuapp.com/eureka    
   instance:
-    statusPageUrl: https://eureka-server-microservice.herokuapp.com//info
-    healthCheckUrl: https://eureka-server-microservice.herokuapp.com/health
     homePageUrl: https://eureka-server-microservice.herokuapp.com/
