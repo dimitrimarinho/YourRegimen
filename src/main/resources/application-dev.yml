@@ -14,7 +14,7 @@ spring:
           predicates:
             - Path=/service-diet/** 
         - id: FINANCE
-          uri: lb://FINANCE
+          uri: https://microservice-finance.herokuapp.com/
           predicates:
             - Path=/financeiro/**
         - id: PACIENT
