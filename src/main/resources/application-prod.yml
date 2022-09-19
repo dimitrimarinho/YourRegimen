@@ -6,12 +6,14 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url: 
-      defaultZone: http://localhost:8763/eureka
+      defaultZone: https://eureka-server-microservice.herokuapp.com/eureka    
   instance:
-    hostname: localhost
+    homePageUrl: https://eureka-server-microservice.herokuapp.com/
+    statusPageUrl: https://microservice-diet.herokuapp.com/actuator/info
+    healthCheckUrl: https://microservice-diet.herokuapp.com/actuator/health
     
-spring:
-  config:
-    import: configserver:http://localhost:8888
-  application:
-    name: 'diet'
+# spring:
+#   config:
+#     import: configserver:http://localhost:8888
+#   application:
+#     name: 'diet'
