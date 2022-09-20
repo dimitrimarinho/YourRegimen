@@ -9,6 +9,8 @@ import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import CadastroCategoria from './components/categorias/cadastroCategoria/CadastroCategoria';
 import DeletarCategoria from './components/categorias/deletarCategoria/DeletarCategoria';
 import ListarCategoria from './components/categorias/listarCategoria/ListarCategoria';
+import ListaRegimen from './components/regimens/listarRegimen/ListaRegimen';
+import CadastroRegimen from './components/regimens/cadastroRegimen/CadastroRegimen';
 
 
 function App() {
@@ -25,8 +27,12 @@ function App() {
    <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
    <Route path="/categorias" element={<ListarCategoria />} />
    <Route path="/formularioCategoria" element={<CadastroCategoria />} />
-    <Route path="/formularioCategoria/:idCategoria" element={<CadastroCategoria />} />
-    <Route path="/deletarCategoria/:idCategoria" element={<DeletarCategoria />} />
+   <Route path="/formularioCategoria/:idCategoria" element={<CadastroCategoria />} />
+   <Route path="/deletarCategoria/:idCategoria" element={<DeletarCategoria />} />
+   <Route path="/regimens" element={<ListaRegimen />} />
+    <Route path="/formularioRegimen" element={<CadastroRegimen />} />
+    <Route path="/formularioRegimen/:idRegimen" element={<CadastroRegimen />} />
+
    </Routes>
    </div>
 
