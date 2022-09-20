@@ -6,7 +6,7 @@ spring:
     gateway:
       routes:
         - id: ADMIN
-          uri: lb://ADMIN
+          uri: https://microservice--admin.herokuapp.com/
           predicates:
             - Path=/usuarios/**
         - id: DIET
