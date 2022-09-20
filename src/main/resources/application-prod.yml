@@ -18,7 +18,7 @@ spring:
           predicates:
             - Path=/financeiro/**
         - id: PACIENT
-          uri: lb://PACIENT
+          uri: https://microservice-pacient.herokuapp.com/
           predicates:
             - Path=/pacientes/**
             
