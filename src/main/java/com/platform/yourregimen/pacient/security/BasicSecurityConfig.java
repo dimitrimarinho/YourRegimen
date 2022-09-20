@@ -25,15 +25,13 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
             .withUser("root")
             .password(passwordEncoder().encode("root"))
             .authorities("ROLE_USER");
-            .httpBasic().disable()
-            .formLogin().disable();
     }
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
