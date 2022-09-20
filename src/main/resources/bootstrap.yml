@@ -1,6 +1,6 @@
 spring:
   application:
-    name: 'pacient'
+    name: 'microservice-pacient'
   profiles:
     active: default
   cloud:
