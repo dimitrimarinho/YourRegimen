@@ -1,4 +1,5 @@
-import { Box, Button, Grid, TextField, Typography, Paper } from "@material-ui/core";
+import { Button, Grid, TextField, Typography, Paper } from "@material-ui/core";
+import{ Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import React from "react";
 import "./Login.css";
