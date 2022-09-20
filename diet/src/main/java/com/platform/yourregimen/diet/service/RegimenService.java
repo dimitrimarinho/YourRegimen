@@ -159,21 +159,21 @@ public class RegimenService {
 		return queryResp;
 	}
 	
-	public String ConectarApi(String inputFoods) throws IOException, InterruptedException {
-		String foodsSearch = URLEncoder.encode(inputFoods, StandardCharsets.UTF_8);
-		System.out.print("\n" + foodsSearch);
-		AsyncHttpClient client = new DefaultAsyncHttpClient();
-		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
-			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
-			.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
-			.execute()
-			.toCompletableFuture()
-			.join().getResponseBody();
+   public String ConectarApi(String foodsSearch) throws IOException, InterruptedException {
+        AsyncHttpClient client = new DefaultAsyncHttpClient();
+        String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
+            .setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+            .setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
+            .execute()
+            .toCompletableFuture()
+            .join().getResponseBody();
 
-		client.close();
-		//System.out.println(resp);
-		return resp;		
-	}
+
+
+        client.close();
+        //System.out.println(resp);
+        return resp;        
+    }
 
 	public JSONArray getInformations(String responseBody) {
 		JSONObject tmp = new JSONObject(responseBody);
