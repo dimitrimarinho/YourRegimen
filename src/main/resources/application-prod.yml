@@ -12,8 +12,8 @@ eureka:
     statusPageUrl: https://microservice-diet.herokuapp.com/actuator/info
     healthCheckUrl: https://microservice-diet.herokuapp.com/actuator/health
     
-# spring:
-#   config:
-#     import: configserver:http://localhost:8888
-#   application:
-#     name: 'diet'
+spring:
+  config:
+    import: configserver:https://microservice-configserver.herokuapp.com/
+  application:
+    name: 'diet'
