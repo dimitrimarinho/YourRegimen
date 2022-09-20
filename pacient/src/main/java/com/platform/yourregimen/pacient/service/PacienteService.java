@@ -64,7 +64,10 @@ public class PacienteService {
 				usuarioLogin.get().setNome(usuario.get().getNomePaciente());
 				usuarioLogin.get().setUsuario(usuario.get().getLoginPaciente());
 				usuarioLogin.get().setSenha(usuario.get().getSenhaPaciente());
-				
+				usuarioLogin.get().setAltura(usuario.get().getAltura());
+				usuarioLogin.get().setPeso(usuario.get().getPeso());
+				usuarioLogin.get().setMaxCalories(usuario.get().getMaxCalories());
+				usuarioLogin.get().setMinCalories(usuario.get().getMinCalories());
 
 				return usuarioLogin;
 
