@@ -2,7 +2,7 @@ spring:
   application:
     name: API-GATEWAY
   profiles:
-    active: dev
+    active: prod
   
 management:
   endpoints:
