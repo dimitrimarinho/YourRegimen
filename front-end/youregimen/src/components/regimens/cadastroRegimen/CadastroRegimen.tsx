@@ -73,7 +73,7 @@ function CadastroRegimen(){
         })
     }
 
-    async function findByIdRegimen(idRegimen: string) {
+    async function findByIdRegimen(idRegimen: string | undefined) {
         await buscaId(`regimens/${idRegimen}`, setRegimen, {
             headers: {
                 'Authorization': token

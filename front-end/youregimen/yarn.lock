@@ -2219,7 +2219,7 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/redux@^3.6.0":
+"@types/redux@3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.0.tgz#f1ebe1e5411518072e4fdfca5c76e16e74c1399a"
   integrity sha512-ic+60DXHW5seNyqFvfr7Sk5cnXs+HsF9tIeIaxjOuSP5kzgDXC+AzKTYmjAfuLx4Sccm/0vjwBQj3OOkUkwOqg==
@@ -9806,10 +9806,10 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
-react-toastify@^8.0.3:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-8.2.0.tgz#ef7d56bdfdc6272ca6b228368ab564721c3a3244"
-  integrity sha512-Pg2Ju7NngAamarFvLwqrFomJ57u/Ay6i6zfLurt/qPynWkAkOthu6vxfqYpJCyNhHRhR4hu7+bySSeWWJu6PAg==
+react-toastify@^9.0.8:
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.0.8.tgz#3876c89fc6211a29027b3075010b5ec39ebe4f7e"
+  integrity sha512-EwM+teWt49HSHx+67qI08yLAW1zAsBxCXLCsUfxHYv1W7/R3ZLhrqKalh7j+kjgPna1h5LQMSMwns4tB4ww2yQ==
   dependencies:
     clsx "^1.1.1"
 
@@ -9913,7 +9913,7 @@ redux-thunk@^2.4.1:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
   integrity sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==
 
-redux@*, redux@^4.0.0, redux@^4.1.2:
+redux@*, redux@^4.0.0, redux@^4.1.2, redux@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.2.0.tgz#46f10d6e29b6666df758780437651eeb2b969f13"
   integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
