@@ -6,9 +6,11 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url: 
-      defaultZone: https://eureka-server-microservice.herokuapp.com
+      defaultZone: https://eureka-server-microservice.herokuapp.com/eureka    
   instance:
-    hostname: https://eureka-server-microservice.herokuapp.com
+    homePageUrl: https://eureka-server-microservice.herokuapp.com/
+    statusPageUrl: https://microservice-finance.herokuapp.com/actuator/info
+    healthCheckUrl: https://microservice-finance.herokuapp.com/actuator/health
 
 spring:
   config:
