@@ -10,7 +10,7 @@ spring:
           predicates:
             - Path=/usuarios/**
         - id: DIET
-          uri: lb://DIET
+          uri: https://microservice-diet.herokuapp.com/
           predicates:
             - Path=/service-diet/** 
         - id: FINANCE
