@@ -39,7 +39,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/pacientes/logar").permitAll()
 			.antMatchers("/pacientes/cadastrar").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
-			.anyRequest().authenticated()
+			// .anyRequest().authenticated()
 			.and().httpBasic()
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and().cors()
