@@ -3,10 +3,10 @@ interface Paciente{
     nomePaciente: string;
     loginPaciente: string;
     senhaPaciente: string;
-	altura: number;
-    peso: number;
-	maxCalories: number;
-    minCalories: number;
+	altura: number | undefined;
+    peso: number | undefined;
+	maxCalories: number | undefined;
+    minCalories: number | undefined;
 }
 
 export default Paciente;

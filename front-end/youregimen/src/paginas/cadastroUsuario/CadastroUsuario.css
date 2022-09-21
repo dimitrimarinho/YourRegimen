@@ -24,7 +24,6 @@
 .paperCadastro {
     max-height: 68vh !important;
     overflow-y: auto;
-    direction: rtl;
     border-radius: 16px !important;
     width: 500px;
     transform: translateX(64px) !important;

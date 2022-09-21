@@ -17,10 +17,10 @@ function CadastroUsuario() {
             nomePaciente: '',
             loginPaciente: '',
             senhaPaciente: '',
-            altura: 0,
-            peso: 0,
-            maxCalories: 0,
-            minCalories: 0
+            altura: undefined,
+            peso: undefined,
+            maxCalories: undefined,
+            minCalories: undefined
         })
 
     const [userResult, setUserResult] = useState<Paciente>(
@@ -112,8 +112,8 @@ function CadastroUsuario() {
                                 <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='Confirme a sua senha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth className="tfCadastro" required />
 
 
-                                <TextField value={user.altura} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='altura' label='Altura' variant='outlined' name='altura' margin='normal' fullWidth className="tfCadastro" required />
-                                <TextField value={user.peso} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='peso' label='Peso(kg)' variant='outlined' name='peso' margin='normal' fullWidth className="tfCadastro" required />
+                                <TextField value={user.altura} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='altura' label='Altura (m)' variant='outlined' name='altura' margin='normal' fullWidth className="tfCadastro" required />
+                                <TextField value={user.peso} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='peso' label='Peso (kg)' variant='outlined' name='peso' margin='normal' fullWidth className="tfCadastro" required />
                                 <TextField value={user.maxCalories} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='maxCalories' label='Quantidade máxima de calorias necessárias' variant='outlined' name='maxCalories' margin='normal' fullWidth className="tfCadastro" required />
                                 <TextField value={user.minCalories} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='minCalories' label='Quantidade mínima de calorias necessárias' variant='outlined' name='minCalories' margin='normal' fullWidth className="tfCadastro" required />
 
