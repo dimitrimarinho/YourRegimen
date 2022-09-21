@@ -1,0 +1,34 @@
+server:
+  port: 9191
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: ADMIN
+          uri: https://microservice--admin.herokuapp.com/
+          predicates:
+            - Path=/usuarios/**
+        - id: DIET
+          uri: https://microservice-diet.herokuapp.com/
+          predicates:
+            - Path=/service-diet/** 
+        - id: FINANCE
+          uri: https://microservice-finance.herokuapp.com/
+          predicates:
+            - Path=/financeiro/**
+        - id: PACIENT
+          uri: https://microservice-pacient.herokuapp.com/
+          predicates:
+            - Path=/pacientes/**
+            
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: https://eureka-server-microservice.herokuapp.com/eureka    
+  instance:
+    homePageUrl: https://eureka-server-microservice.herokuapp.com/
+    statusPageUrl: https://api-gateway--microservice.herokuapp.com/actuator/info
+    healthCheckUrl: https://api-gateway--microservice.herokuapp.com/actuator/health
