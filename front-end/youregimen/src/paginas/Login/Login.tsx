@@ -56,14 +56,14 @@ function Login() {
             });
         } catch (error) {
             toast.error('Dados do usuário inconsistentes. Erro ao logar!', {
-                // position: "top-right",
-                autoClose: 2000
-                // hideProgressBar: false,
-                // closeOnClick: true,
-                // pauseOnHover: false,
-                // draggable: false,
-                // theme: "colored",
-                // progress: undefined,
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
             });
         }
     }
