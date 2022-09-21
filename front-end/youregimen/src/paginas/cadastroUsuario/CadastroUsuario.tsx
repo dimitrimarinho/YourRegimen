@@ -2,10 +2,11 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@material-ui/core";
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import './CadastroUsuario.css';
-import Paciente from "../../model/Paciente";
 import { cadastroUsuario } from "../../service/Service";
 import { toast } from "react-toastify";
+import Paciente from "../../model/Paciente";
+import './CadastroUsuario.css';
+
 
 function CadastroUsuario() {
 
@@ -59,8 +60,8 @@ function CadastroUsuario() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if (confirmarSenha === user.senhaPaciente) {
-            cadastroUsuario(`/pacientes/cadastrar`, user, setUserResult)
-            toast.success('Usuario cadastrado com sucesso', {
+            await cadastroUsuario(`/pacientes/cadastrar`, user, setUserResult)
+            toast.success('Usuário cadastrado com sucesso', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
