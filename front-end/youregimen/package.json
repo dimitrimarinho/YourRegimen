@@ -20,7 +20,7 @@
     "@types/react-dom": "^17",
     "@types/redux": "3.6.0",
     "axios": "^0.27.2",
-    "react": "^18.2.0",
+    "react": "^17",
     "react-dom": "^17",
     "react-redux": "7.2.5",
     "react-router-dom": "6",
