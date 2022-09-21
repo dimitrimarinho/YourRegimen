@@ -42,22 +42,20 @@ public class RegimenController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/infoApi")
-	String ConectarApi(String inputFoods) throws IOException, InterruptedException {
-		String foodsSearch = URLEncoder.encode(inputFoods, StandardCharsets.UTF_8);
-		service.TranslateApi(foodsSearch);
-		AsyncHttpClient client = new DefaultAsyncHttpClient();
-		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
-			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
-			.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
-			.execute()
-			.toCompletableFuture()
-			.join().getResponseBody();
+   @GetMapping("/infoApi")
+   String ConectarApi(String foodsSearch) throws IOException, InterruptedException {
+        AsyncHttpClient client = new DefaultAsyncHttpClient();
+        String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
+            .setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+            .setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
+            .execute()
+            .toCompletableFuture()
+            .join().getResponseBody();
 
-		client.close();
-		//System.out.println(resp);
-		return resp;		
-	}
+        client.close();
+        //System.out.println(resp);
+        return resp;             
+    }
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Regimen> getById(@PathVariable UUID id){
