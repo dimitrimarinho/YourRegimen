@@ -36,9 +36,10 @@ function CadastroUsuario() {
         })
 
     useEffect(() => {
-        if (userResult.idPaciente != '') {
+        if (userResult.idPaciente !== '') {
             navigate("/login")
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userResult])
 
 
@@ -57,7 +58,7 @@ function CadastroUsuario() {
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if (confirmarSenha == user.senhaPaciente) {
+        if (confirmarSenha === user.senhaPaciente) {
             cadastroUsuario(`/pacientes/cadastrar`, user, setUserResult)
             toast.success('Usuario cadastrado com sucesso', {
                 position: "top-right",

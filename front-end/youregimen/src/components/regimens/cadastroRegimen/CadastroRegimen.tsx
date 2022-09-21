@@ -56,6 +56,7 @@ function CadastroRegimen(){
             ...regimen,
             categoria: categoria
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoria])
 
     useEffect(() => {
@@ -63,8 +64,9 @@ function CadastroRegimen(){
         if (idRegimen !== '') {
             findByIdRegimen(idRegimen)
         }
-        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idRegimen])
+
     async function getCategorias() {
         await busca("/categoria", setCategorias, {
             headers: {

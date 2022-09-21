@@ -10,7 +10,7 @@ function Navbar() {
                 <Toolbar variant="dense" className='backF2'>
                     <Grid container justifyContent="space-between" >
                         <Box display="flex" justifyContent="flex-start" alignItems="center" >
-                            <img src="https://i.imgur.com/LwF0S1v.png" title="Logo YourRegimen" width="230px" />
+                            <img src="https://i.imgur.com/LwF0S1v.png" title="Logo YourRegimen" width="230px" alt="Logo do Site com o nome YourRegimen" />
                         </Box>
 
                         <Box display="flex" justifyContent="center" alignItems="center" >

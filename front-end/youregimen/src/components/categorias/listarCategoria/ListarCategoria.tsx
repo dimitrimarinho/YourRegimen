@@ -1,4 +1,4 @@
-import react,  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Categoria from '../../../model/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReducer';
@@ -32,7 +32,7 @@ useEffect(() => {
         })
         navigate("/login")
     }
-   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [token])
 
 async function getCategoria() {
@@ -45,6 +45,7 @@ async function getCategoria() {
 
 useEffect(() => {
     getCategoria()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [categorias.length])
 
 return (

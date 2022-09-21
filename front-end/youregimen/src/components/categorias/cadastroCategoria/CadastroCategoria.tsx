@@ -1,5 +1,5 @@
 import { Button, Container, TextField, Typography } from '@material-ui/core';
-import { findByDisplayValue } from '@testing-library/react';
+// import { findByDisplayValue } from '@testing-library/react';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -39,12 +39,14 @@ function CadastroCategoria(){
             })
             navigate("/login")
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
 
     useEffect(() => {
         if(idCategoria !== undefined){
             findById(idCategoria)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idCategoria])
 
     async function findById(idCategoria: string) {

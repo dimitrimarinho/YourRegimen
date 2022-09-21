@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
-import Categoria from '../../../model/Categoria';
+// import Categoria from '../../../model/Categoria';
 import { busca } from '../../../service/Service';
 
 function ListaRegimen(){
@@ -20,7 +20,7 @@ function ListaRegimen(){
         );
 
         useEffect(() => {
-            if (token == "") {
+            if (token === "") {
               
               toast.error("Você precisa estar logado", {
                 position: "top-right",
@@ -37,6 +37,7 @@ function ListaRegimen(){
               navigate("/login")
         
             }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
           }, [token])
 
           async function getRegimen() {
@@ -47,10 +48,9 @@ function ListaRegimen(){
             })
           }
         
-          useEffect(() => {
-        
+          useEffect(() => {           
             getRegimen()
-        
+            // eslint-disable-next-line react-hooks/exhaustive-deps
           }, [regimens.length])
 
           return(

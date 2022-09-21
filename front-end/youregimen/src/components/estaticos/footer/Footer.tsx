@@ -15,7 +15,7 @@ function Footer() {
                             <Typography variant='h1' className='text'> Acompanhe o nosso projeto:</Typography>
                         </Box>
                         <Box>
-                            <a href="https://github.com/dimitrimarinho/YourRegimen" target="_blank" className='text'>
+                            <a href="https://github.com/dimitrimarinho/YourRegimen" target="_blank" rel="noreferrer" className='text'>
                                 <GitHub className='social' />
                             </a>
                         </Box>

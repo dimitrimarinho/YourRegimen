@@ -18,7 +18,7 @@ const token = useSelector<TokenState, TokenState["tokens"]>(
     const [categoria, setCategoria] = useState<Categoria>()
 
     useEffect(() => {
-        if (token == "") {
+        if (token === "") {
           
             toast.error("Você precisa estar logado", {
               position: "top-right",
@@ -35,12 +35,14 @@ const token = useSelector<TokenState, TokenState["tokens"]>(
             navigate("/login")
     
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
 
     useEffect(() => {
         if(idCategoria !== undefined){
             findById(idCategoria)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idCategoria])
 
     async function findById(idCategoria: string) {

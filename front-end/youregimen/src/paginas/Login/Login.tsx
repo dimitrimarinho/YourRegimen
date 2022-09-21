@@ -32,10 +32,11 @@ function Login() {
         }
 
             useEffect(()=>{
-                if(token != ''){
+                if(token !== ''){
                     dispatch(addToken(token));
                     navigate('/home')
                 }
+                // eslint-disable-next-line react-hooks/exhaustive-deps
             }, [token])
 
         async function onSubmit(e: ChangeEvent<HTMLFormElement>){
