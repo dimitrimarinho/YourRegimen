@@ -3,6 +3,9 @@ spring:
     name: API-GATEWAY
   profiles:
     active: prod
+  security:
+    user: root
+    password: root
   
 management:
   endpoints:
