@@ -26,7 +26,7 @@ import com.platform.yourregimen.admin.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdminController {
 
 	@Autowired
