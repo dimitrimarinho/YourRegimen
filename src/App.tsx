@@ -17,6 +17,7 @@ import store from './store/store';
 import 'react-toastify/dist/ReactToastify.css';
 import CadastroAdmin from './paginas/cadastroUsuario/CadastroAdmin';
 import LoginAdmin from './paginas/Login/LoginAdmin';
+import DietasPaciente from './paginas/dietas/DietasPaciente';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/formularioRegimen/:idRegimen" element={<CadastroRegimen />} />
             <Route path="/cadastroNutricionista" element={<CadastroAdmin/>} />
             <Route path="/loginNutricionista" element={<LoginAdmin/>} />
+            <Route path="/minhadieta" element={<DietasPaciente/>} />
 
           </Routes>
         </div>

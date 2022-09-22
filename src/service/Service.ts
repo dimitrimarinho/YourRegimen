@@ -1,9 +1,7 @@
-import axios from 'axios';
-
-
+import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'https://echo.hoppscotch.io/http://api-gateway--microservice.herokuapp.com'
+    baseURL: 'https://cors-anywhere.herokuapp.com/https://api-gateway--microservice.herokuapp.com'
 })
 
 export const cadastroUsuario = async (url: any, dados: any, setDado: any) => {
