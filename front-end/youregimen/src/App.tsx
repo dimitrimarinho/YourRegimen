@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import store from './store/store';
 import 'react-toastify/dist/ReactToastify.css';
+import CadastroAdmin from './paginas/cadastroUsuario/CadastroAdmin';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Navbar />
         <div style={{ minHeight: '100vh' }}>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
@@ -35,6 +36,7 @@ function App() {
             <Route path="/regimens" element={<ListaRegimen />} />
             <Route path="/formularioRegimen" element={<CadastroRegimen />} />
             <Route path="/formularioRegimen/:idRegimen" element={<CadastroRegimen />} />
+            <Route path="/loginNutricionista" element={<CadastroAdmin/>} />
 
           </Routes>
         </div>
