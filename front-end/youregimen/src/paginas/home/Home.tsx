@@ -11,16 +11,18 @@ function Home() {
                 <Box className='imgHome' flexDirection="column" justifyContent="center" alignItems="center" display='flex' paddingX={2}>
                     <Box flexDirection="column" justifyContent="center" alignItems="center" display='flex'>
                         <Box marginBottom={2}>
-                            <Link to='/loginNutricionista'>
+                            <Link to='/loginNutricionista' style={{textDecoration: 'none'}}>
                                 <Button className="botaoH" variant="outlined">
                                     Sou nutricionista
                                 </Button>
                             </Link>
                         </Box>
                         <Box marginTop={2}>
+                        <Link to='/login' style={{textDecoration: 'none'}}>
                             <Button className="botaoH" variant="outlined">
                                 Quero uma dieta
                             </Button>
+                            </Link>
                         </Box>
                     </Box>
                 </Box>
