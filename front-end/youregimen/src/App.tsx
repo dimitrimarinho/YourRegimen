@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import store from './store/store';
 import 'react-toastify/dist/ReactToastify.css';
 import CadastroAdmin from './paginas/cadastroUsuario/CadastroAdmin';
+import LoginAdmin from './paginas/Login/LoginAdmin';
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
             <Route path="/regimens" element={<ListaRegimen />} />
             <Route path="/formularioRegimen" element={<CadastroRegimen />} />
             <Route path="/formularioRegimen/:idRegimen" element={<CadastroRegimen />} />
-            <Route path="/loginNutricionista" element={<CadastroAdmin/>} />
+            <Route path="/cadastroNutricionista" element={<CadastroAdmin/>} />
+            <Route path="/loginNutricionista" element={<LoginAdmin/>} />
 
           </Routes>
         </div>
