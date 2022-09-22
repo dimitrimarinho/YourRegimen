@@ -1,4 +1,3 @@
-/*
 package com.platform.yourregimen.cloud.gateway.config;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -20,4 +19,3 @@ public class GatewayConfig {
 				.build();
 	}
 }
-*/
