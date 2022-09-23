@@ -2,3 +2,7 @@
     cursor: pointer;
     font-weight: bold !important;
 }
+
+.boxJaTemConta.MuiBox-root {
+    padding-top: 16px !important;
+}

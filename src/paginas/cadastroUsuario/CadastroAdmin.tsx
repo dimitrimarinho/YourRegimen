@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@material-ui/core";
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +6,6 @@ import { cadastroUsuario } from "../../service/Service";
 import { toast } from "react-toastify";
 import Admin from "../../model/Admin";
 import './CadastroAdmin.css';
-
 
 function CadastroAdmin() {
 
@@ -85,7 +84,7 @@ function CadastroAdmin() {
                     <Paper style={{ padding: '32px 48px', borderRadius: '16px', maxWidth: "480px" }} elevation={12} className="paperCadastro">
                         <Box display="flex" justifyContent="center" className='boxJaTemConta' flexDirection='row'>
                             <Box marginRight={1}>
-                                <Typography variant="subtitle1" gutterBottom align="center">
+                                <Typography variant="subtitle1" gutterBottom align="center" >
                                     Já tem uma conta?
                                 </Typography>
                             </Box>

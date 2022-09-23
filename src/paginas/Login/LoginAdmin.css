@@ -54,3 +54,8 @@
 .MuiPaper-root.login-c.MuiPaper-elevation1.MuiPaper-rounded {
     margin-left: 10% !important;
 }
+
+.cursor-cadastreseAdmin {
+    cursor: pointer;
+    font-weight: bold !important;
+}

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Grid, TextField, Typography, Paper } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,9 +6,8 @@ import { useDispatch } from "react-redux";
 import { addToken } from "../../store/tokens/actions";
 import { login } from "../../service/Service";
 import { toast } from "react-toastify";
-import "./Login.css";
 import AdminLogin from "../../model/AdminLogin";
-
+import "./LoginAdmin.css";
 
 function LoginAdmin() {
 
@@ -94,7 +93,7 @@ function LoginAdmin() {
                                     </Typography>
                                 </Box>
                                 <Link to='/cadastroNutricionista' style={{ textDecoration: 'none', color: '#40352C' }}>
-                                    <Typography variant="subtitle1" gutterBottom align="center" className="cursor">
+                                    <Typography variant="subtitle1" gutterBottom align="center" className="cursor-cadastreseAdmin">
                                         Cadastre-se
                                     </Typography>
                                 </Link>

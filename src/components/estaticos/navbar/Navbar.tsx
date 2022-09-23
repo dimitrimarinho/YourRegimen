@@ -1,17 +1,12 @@
-import React from 'react';
 import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
-import { useDispatch, useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { useDispatch } from "react-redux";
 import { addToken } from "../../../store/tokens/actions";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Navbar.css'
 
 function Navbar() {
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
     let navigate = useNavigate();
     const dispatch = useDispatch();
 
