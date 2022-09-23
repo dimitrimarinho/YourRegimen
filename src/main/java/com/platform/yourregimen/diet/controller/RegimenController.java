@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.platform.yourregimen.diet.model.InfoApi;
 import com.platform.yourregimen.diet.model.Regimen;
 import com.platform.yourregimen.diet.repository.RegimenRepository;
 import com.platform.yourregimen.diet.service.RegimenService;
@@ -38,49 +39,51 @@ public class RegimenController {
 	private RegimenService service;
 
 	@GetMapping("/getall")
-	public ResponseEntity<List<Regimen>> getAll(){
+	public ResponseEntity<List<Regimen>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
-	
-   @GetMapping("/infoApi")
-   String ConectarApi(String foodsSearch) throws IOException, InterruptedException {
-        AsyncHttpClient client = new DefaultAsyncHttpClient();
-        String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
-            .setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
-            .setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
-            .execute()
-            .toCompletableFuture()
-            .join().getResponseBody();
 
-        client.close();
-        //System.out.println(resp);
-        return resp;             
-    }
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Regimen> getById(@PathVariable UUID id){
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	@GetMapping("/infoApi")
+	String ConectarApi(String foodSearch) throws IOException, InterruptedException {
+		InfoApi infosApi = new InfoApi();
+		infosApi.setFoodSearch(foodSearch);
+		AsyncHttpClient client = new DefaultAsyncHttpClient();
+		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=" + foodSearch)
+				.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+				.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com").execute().toCompletableFuture().join()
+				.getResponseBody();
+
+		client.close();
+
+		infosApi.setInfoApi(resp);
+
+		// System.out.println(resp);
+		return infosApi.getInfoApi();
 	}
-	
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Regimen> getById(@PathVariable UUID id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	}
+
 	@GetMapping("/regimenName/{regimenName}")
-	public ResponseEntity<List<Regimen>> getByName(@PathVariable String regimenName){
+	public ResponseEntity<List<Regimen>> getByName(@PathVariable String regimenName) {
 		return ResponseEntity.ok(repository.findAllByRegimenNameContainingIgnoreCase(regimenName));
 	}
-	
+
 	@PostMapping(value = "/")
-	public ResponseEntity <Regimen> post(@Valid @RequestBody Regimen regimen){
+	public ResponseEntity<Regimen> post(@Valid @RequestBody Regimen regimen) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(regimen));
 	}
-	
-	@PutMapping(value = "/") 
-	public ResponseEntity <Regimen> put (@Valid @RequestBody Regimen regimen){
+
+	@PutMapping(value = "/")
+	public ResponseEntity<Regimen> put(@Valid @RequestBody Regimen regimen) {
 		return ResponseEntity.ok(repository.save(regimen));
 	}
-	
-	@DeleteMapping(value="/delete/{id}")
-	public void delete (@PathVariable UUID id) {
+
+	@DeleteMapping(value = "/delete/{id}")
+	public void delete(@PathVariable UUID id) {
 		repository.deleteById(id);
 	}
-	
+
 }

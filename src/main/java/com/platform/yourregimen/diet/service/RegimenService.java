@@ -10,9 +10,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import com.platform.yourregimen.diet.model.InfoApi;
+
 @Service
 public class RegimenService {
-	
+
 	private double sugar_g;
 	private double fiber_g;
 	private double serving_size_g;
@@ -145,63 +147,63 @@ public class RegimenService {
 	public String TranslateApi(String query) throws IOException {
 		AsyncHttpClient client = new DefaultAsyncHttpClient();
 		String queryResp = client.prepare("POST", "https://google-translate1.p.rapidapi.com/language/translate/v2")
-			.setHeader("content-type", "application/x-www-form-urlencoded")
-			.setHeader("Accept-Encoding", "application/gzip")
-			.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
-			.setHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
-			.setBody("q=" +query+ "&target=en&source=pt")
-			.execute()
-			.toCompletableFuture()
-			.join().getResponseBody();
+				.setHeader("content-type", "application/x-www-form-urlencoded")
+				.setHeader("Accept-Encoding", "application/gzip")
+				.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+				.setHeader("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
+				.setBody("q=" + query + "&target=en&source=pt").execute().toCompletableFuture().join()
+				.getResponseBody();
 
 		client.close();
-		
+
 		return queryResp;
 	}
-	
-   public String ConectarApi(String foodsSearch) throws IOException, InterruptedException {
-        AsyncHttpClient client = new DefaultAsyncHttpClient();
-        String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query="+foodsSearch)
-            .setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
-            .setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com")
-            .execute()
-            .toCompletableFuture()
-            .join().getResponseBody();
 
+	public String ConectarApi(String foodSearch) throws IOException, InterruptedException {
+		InfoApi infosApi = new InfoApi();
+		infosApi.setFoodSearch(foodSearch);
+		AsyncHttpClient client = new DefaultAsyncHttpClient();
+		String resp = client.prepare("GET", "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=" + foodSearch)
+				.setHeader("X-RapidAPI-Key", "c7bcdbfb72mshd0504f627ba07aap13087ajsn90ded51d1d19")
+				.setHeader("X-RapidAPI-Host", "calorieninjas.p.rapidapi.com").execute().toCompletableFuture().join()
+				.getResponseBody();
 
+		client.close();
 
-        client.close();
-        //System.out.println(resp);
-        return resp;        
-    }
+		infosApi.setInfoApi(resp);
+
+		// System.out.println(resp);
+		return infosApi.getInfoApi();
+
+	}
 
 	public JSONArray getInformations(String responseBody) {
 		JSONObject tmp = new JSONObject(responseBody);
 		JSONArray foodList = tmp.getJSONArray("items");
 		int lenghtJSON = foodList.length();
-		System.out.println("\n" + foodList + "\n");	
+		System.out.println("\n" + foodList + "\n");
 		for (int i = 0; i < lenghtJSON; i++) {
 			JSONObject nutritionalInformation = foodList.getJSONObject(i);
-			System.out.println("\nName: " + nutritionalInformation.get("name"));	
-			System.out.println("Calories: " + nutritionalInformation.get("calories"));	
-			System.out.println("Carbohydrates_total_g: " + nutritionalInformation.get("carbohydrates_total_g"));	
-			System.out.println("Cholesterol_mg: " + nutritionalInformation.get("cholesterol_mg"));	
-			System.out.println("Fat_saturated_g: " + nutritionalInformation.get("fat_saturated_g"));	
-			System.out.println("Fat_total_g: " + nutritionalInformation.get("fat_total_g"));	
+			System.out.println("\nName: " + nutritionalInformation.get("name"));
+			System.out.println("Calories: " + nutritionalInformation.get("calories"));
+			System.out.println("Carbohydrates_total_g: " + nutritionalInformation.get("carbohydrates_total_g"));
+			System.out.println("Cholesterol_mg: " + nutritionalInformation.get("cholesterol_mg"));
+			System.out.println("Fat_saturated_g: " + nutritionalInformation.get("fat_saturated_g"));
+			System.out.println("Fat_total_g: " + nutritionalInformation.get("fat_total_g"));
 			System.out.println("Fiber_g: " + nutritionalInformation.get("fiber_g"));
-			System.out.println("Potassium_mg: " + nutritionalInformation.get("potassium_mg"));	
-			System.out.println("Protein_g: " + nutritionalInformation.get("protein_g"));	
-			System.out.println("Serving_size_g: " + nutritionalInformation.get("serving_size_g"));	
-			System.out.println("Sodium_mg: " + nutritionalInformation.get("sodium_mg"));	
-			System.out.println("Sugar_g: " + nutritionalInformation.get("sugar_g"));	
+			System.out.println("Potassium_mg: " + nutritionalInformation.get("potassium_mg"));
+			System.out.println("Protein_g: " + nutritionalInformation.get("protein_g"));
+			System.out.println("Serving_size_g: " + nutritionalInformation.get("serving_size_g"));
+			System.out.println("Sodium_mg: " + nutritionalInformation.get("sodium_mg"));
+			System.out.println("Sugar_g: " + nutritionalInformation.get("sugar_g"));
 		}
 		System.out.print("\n\n");
-		
+
 		return foodList;
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		
+
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Digite a lista de alimentos da dieta: ");
 		String query = scan.nextLine();
@@ -209,8 +211,8 @@ public class RegimenService {
 		RegimenService alimento = new RegimenService();
 		alimento.TranslateApi(query);
 		String getfromAPI = alimento.ConectarApi(query);
-		alimento. getInformations(getfromAPI);			
-		
+		alimento.getInformations(getfromAPI);
+
 	}
 
 }
