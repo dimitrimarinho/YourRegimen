@@ -98,7 +98,7 @@ function CadastroUsuario() {
                                 </Typography>
                             </Box>
                             <Link to='/login' style={{ textDecoration: 'none', color: '#40352C' }}>
-                                <Typography variant="subtitle1" gutterBottom align="center" className="cursor">
+                                <Typography variant="subtitle1" gutterBottom align="center" className="cursor-loginUsuario">
                                     Fazer login
                                 </Typography>
                             </Link>

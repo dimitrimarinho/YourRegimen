@@ -53,7 +53,7 @@ function Navbar() {
                                 </Typography>
                             </Box>
                             <Box paddingX={3}>
-                                <Typography className="cursor" variant="h6" color="inherit" onClick={sair}>
+                                <Typography className="cursor-navbar" variant="h6" color="inherit" onClick={sair}>
                                     Sair
                                 </Typography>
                             </Box>

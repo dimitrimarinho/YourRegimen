@@ -17,6 +17,7 @@
 }
 
 .boxJaTemConta {
+    padding-top: 16px !important;
     transform: scaleX(-1) scaleY(-1);
     align-items: center;
 }
@@ -65,4 +66,9 @@
 
 .MuiOutlinedInput-root {
     border-radius: 8px !important;
+}
+
+.cursor-loginUsuario {
+    cursor: pointer;
+    font-weight: bold !important;
 }

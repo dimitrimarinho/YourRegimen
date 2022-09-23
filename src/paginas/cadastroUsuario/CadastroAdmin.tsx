@@ -90,7 +90,7 @@ function CadastroAdmin() {
                                 </Typography>
                             </Box>
                             <Link to='/loginNutricionista' style={{ textDecoration: 'none', color: '#40352C' }}>
-                                <Typography variant="subtitle1" gutterBottom align="center" className="cursor">
+                                <Typography variant="subtitle1" gutterBottom align="center" className="cursor-loginAdmin">
                                     Fazer login
                                 </Typography>
                             </Link>
