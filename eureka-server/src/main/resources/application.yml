@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: prod
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    auditevents:
+      enabled: true
+    info:
+      enabled: true
+  health:
+    defaults:
+      enabled: true
