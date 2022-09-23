@@ -36,7 +36,7 @@ function LoginAdmin() {
     useEffect(() => {
         if (token !== '') {
             dispatch(addToken(token));
-            navigate('/minhadieta')
+            navigate('/home-nutricionista')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
