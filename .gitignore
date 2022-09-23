@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+node_modules/
 front-end/
 
 ### STS ###
@@ -32,6 +33,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### React ###
-node_modules/
