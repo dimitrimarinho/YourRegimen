@@ -1,0 +1,19 @@
+server:
+  port: 8086
+ 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url: 
+      defaultZone: https://eureka-server-microservice.herokuapp.com/eureka    
+  instance:
+    homePageUrl: https://eureka-server-microservice.herokuapp.com/
+    statusPageUrl: https://microservice-finance.herokuapp.com/actuator/info
+    healthCheckUrl: https://microservice-finance.herokuapp.com/actuator/health
+
+spring:
+  config:
+    import: configserver:https://microservice-configserver.herokuapp.com/
+  application:
+    name: 'finance'
