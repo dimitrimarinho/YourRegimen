@@ -14,3 +14,7 @@
 .padding-left-navbar {
     padding: 10px !important;
 }
+.cursor{
+    cursor: pointer;
+    padding: 10px !important;
+}
