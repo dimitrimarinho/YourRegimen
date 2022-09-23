@@ -1,0 +1,76 @@
+package com.platform.yourregimen.admin.model;
+
+import java.util.UUID;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
+public class AdminLogin {
+	
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+	@Type(type = "org.hibernate.type.UUIDCharType")
+	@Id
+	private UUID id;
+	
+	private String nome;
+	
+	private String usuario;
+	
+	private String senha;
+	
+	private String token;
+
+	public AdminLogin(UUID id, String nome, String usuario, String senha, String token) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.token = token;
+	}
+
+	public AdminLogin() {
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+		
+}
