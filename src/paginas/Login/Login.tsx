@@ -35,7 +35,7 @@ function Login() {
     useEffect(() => {
         if (token !== '') {
             dispatch(addToken(token));
-            navigate('/home')
+            navigate('/minhadieta')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token])
