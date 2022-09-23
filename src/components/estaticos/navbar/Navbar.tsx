@@ -1,9 +1,37 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { addToken } from "../../../store/tokens/actions";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import './Navbar.css'
 
 function Navbar() {
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
+    let navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    function sair() {
+        dispatch(addToken(''))
+        toast.info("Usuario deslogado", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined
+
+
+        })
+        navigate("/home")
+    }
+
     return (
         <>
             <AppBar position="sticky" >
@@ -25,7 +53,7 @@ function Navbar() {
                                 </Typography>
                             </Box>
                             <Box paddingX={3}>
-                                <Typography className="padding-left-navbar" variant="h6" color="inherit">
+                                <Typography className="cursor" variant="h6" color="inherit" onClick={sair}>
                                     Sair
                                 </Typography>
                             </Box>

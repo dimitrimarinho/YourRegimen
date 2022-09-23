@@ -1,16 +1,21 @@
-.backF2{
+.backF2 {
     background-color: #590202;
 }
 
-.MenuNavbar{
+.MenuNavbar {
     color: white;
 }
 
-.MenuNavbar:hover{
+.MenuNavbar:hover {
     color: #F27127 !important;
     transform: scale(1.1) !important;
 }
 
 .padding-left-navbar {
+    padding: 10px !important;
+}
+
+.cursor {
+    cursor: pointer;
     padding: 10px !important;
 }
