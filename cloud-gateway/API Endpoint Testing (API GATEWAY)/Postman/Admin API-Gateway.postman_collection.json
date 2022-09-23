@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "1bf84bcb-04b8-418c-9fbe-f2fb60cf6abd",
+		"name": "Admin API-Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Isabela Piana",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Isabela Piana\",\r\n  \"usuario\": \"isabelapiana\",\r\n  \"senha\": \"disneyprincessgeneration21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/usuarios/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stefani Machado Oliveira",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Stefani Machado Oliveira\",\r\n  \"usuario\": \"stefanimachado\",\r\n  \"senha\": \"senhadieta1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/usuarios/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dimitri Santana Marinho",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Dimitri Santana Marinho\",\r\n  \"usuario\": \"dimitrimarinho\",\r\n  \"senha\": \"nutricaodieta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/usuarios/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuário Teste (Para Deletar)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"Articuno Charizard\",\r\n  \"usuario\": \"charizardthebest\",\r\n  \"senha\": \"articunonadinha\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/usuarios/cadastrar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Atualizar Login Isabela",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":\"{{idUsuario_PUT}}\",\r\n  \"nome\": \"Isabela Piana\",\r\n  \"usuario\": \"isabela.piana\",\r\n  \"senha\": \"disneyprincessgeneration21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/usuarios/atualizar",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"atualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL (Usuarios)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/usuarios/all",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID (Usuario)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/usuarios/{{idUsuario_GET}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"{{idUsuario_GET}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Usuário Teste",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/usuarios/{{idUsuario_DELETE}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"usuarios",
+						"{{idUsuario_DELETE}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:9191",
+			"type": "default"
+		},
+		{
+			"key": "idUsuario_PUT",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idUsuario_GET",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "idUsuario_DELETE",
+			"value": ""
+		}
+	]
+}
