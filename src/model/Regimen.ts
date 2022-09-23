@@ -2,7 +2,7 @@ import Categoria from "./Categoria";
 
 interface Regimen {
     idRegimen: string;
-    categoria: Categoria;
+    categoria?: Categoria | null;
     regimenName: string;
     foodList: string;
 }

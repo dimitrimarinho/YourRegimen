@@ -18,6 +18,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import CadastroAdmin from './paginas/cadastroUsuario/CadastroAdmin';
 import LoginAdmin from './paginas/Login/LoginAdmin';
 import DietasPaciente from './paginas/dietas/DietasPaciente';
+import HomeNutricionista from './paginas/home/HomeNutricionista';
+import CadastrarCategoria from './paginas/dietas/CadastrarCategoria';
+import CadastrarDieta from './paginas/dietas/CadastrarDieta';
 
 function App() {
   return (
@@ -38,9 +41,12 @@ function App() {
             <Route path="/regimens" element={<ListaRegimen />} />
             <Route path="/formularioRegimen" element={<CadastroRegimen />} />
             <Route path="/formularioRegimen/:idRegimen" element={<CadastroRegimen />} />
-            <Route path="/cadastroNutricionista" element={<CadastroAdmin/>} />
-            <Route path="/loginNutricionista" element={<LoginAdmin/>} />
-            <Route path="/minhadieta" element={<DietasPaciente/>} />
+            <Route path="/cadastroNutricionista" element={<CadastroAdmin />} />
+            <Route path="/loginNutricionista" element={<LoginAdmin />} />
+            <Route path="/minhadieta" element={<DietasPaciente />} />
+            <Route path="/home-nutricionista" element={<HomeNutricionista />} />
+            <Route path="cadastrar-categoria" element={<CadastrarCategoria />} />
+            <Route path="cadastrar-dieta" element={<CadastrarDieta />} />
 
           </Routes>
         </div>
