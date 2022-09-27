@@ -1,6 +1,5 @@
 import { Button, Container, TextField, Typography } from '@material-ui/core';
-// import { findByDisplayValue } from '@testing-library/react';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,9 +8,9 @@ import { buscaId, post, put } from '../../../service/Service';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import './CadastroCategoria.css';
 
-function CadastroCategoria(){
+function CadastroCategoria() {
     let navigate = useNavigate();
-    const {idCategoria} = useParams<{idCategoria: string}>();
+    const { idCategoria } = useParams<{ idCategoria: string }>();
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
@@ -39,85 +38,84 @@ function CadastroCategoria(){
             })
             navigate("/login")
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [token])
+    }, [token, navigate])
 
     useEffect(() => {
-        if(idCategoria !== undefined){
+        async function findById(idCategoria: string) {
+            buscaId(`/categoria/${idCategoria}`, setCategoria, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        }
+
+        if (idCategoria !== undefined) {
             findById(idCategoria)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [idCategoria])
+    }, [idCategoria, token])
 
-    async function findById(idCategoria: string) {
-        buscaId(`/categoria/${idCategoria}`, setCategoria, {
-            headers: {
-              'Authorization': token
-            }
-          })
-        }
 
-        function updatedCategoria(e: ChangeEvent<HTMLInputElement>) {
+    function updatedCategoria(e: ChangeEvent<HTMLInputElement>) {
 
-            setCategoria({
-                ...categoria,
-                [e.target.name]: e.target.value,
+        setCategoria({
+            ...categoria,
+            [e.target.name]: e.target.value,
+        })
+
+    }
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault()
+        console.log("categoria " + JSON.stringify(categoria))
+
+        if (idCategoria !== undefined) {
+            console.log(categoria)
+            put(`/categoria`, categoria, setCategoria, {
+                headers: {
+                    'Authorization': token
+                }
             })
-    
+
+            toast.success("Categoria atualizada com sucesso", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined
+
+
+            })
+        } else {
+            post(`/categoria`, categoria, setCategoria, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+
+            toast.success("Categoria cadastrada com sucesso", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined
+
+
+            })
         }
-        
-        async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-            e.preventDefault()
-            console.log("categoria " + JSON.stringify(categoria))
-    
-            if (idCategoria !== undefined) {
-                console.log(categoria)
-                put(`/categoria`, categoria, setCategoria, {
-                    headers: {
-                        'Authorization': token
-                    }
-                })
-               
-                toast.success("Categoria atualizada com sucesso", {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: "colored",
-                    progress: undefined
-                    
-        
-                })
-            } else {
-                post(`/categoria`, categoria, setCategoria, {
-                    headers: {
-                        'Authorization': token
-                    }
-                })
-               
-                toast.success("Categoria cadastrada com sucesso", {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: false,
-                    theme: "colored",
-                    progress: undefined
-                    
-        
-                })
-            }
-            back()
-    
-        }
-    
-        function back() {
-            navigate('/categorias')
-        }
-  
+        back()
+
+    }
+
+    function back() {
+        navigate('/categorias')
+    }
+
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>

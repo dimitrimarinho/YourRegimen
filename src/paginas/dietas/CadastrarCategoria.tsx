@@ -22,7 +22,7 @@ function CadastrarCategoria() {
     })
 
     useEffect(() => {
-        if (token == "") {
+        if (token === "") {
             toast.error('Você precisa estar logado!', {
                 position: "top-right",
                 autoClose: 2000,
@@ -35,21 +35,20 @@ function CadastrarCategoria() {
             });
             navigate('/loginNutricionista')
         };
-    }, [token])
+    }, [token, navigate])
 
     useEffect(() => {
+        async function findById(id: string) {
+            buscaId(`/service-diet/categoria/getById/${id}`, setCategoria, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        }
         if (id !== undefined) {
             findById(id)
         }
-    }, [id])
-
-    async function findById(id: string) {
-        buscaId(`/service-diet/categoria/getById/${id}`, setCategoria, {
-            headers: {
-                'Authorization': token
-            }
-        })
-    }
+    }, [token, id])
 
     function updatedTema(e: ChangeEvent<HTMLInputElement>) {
         setCategoria({

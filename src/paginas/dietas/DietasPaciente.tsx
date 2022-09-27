@@ -1,12 +1,12 @@
 import { Button, Card, CardActions, CardContent, Grid, TextField, Typography } from "@material-ui/core";
-import { Box } from "@mui/material";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import Regimen from "../../model/Regimen";
-import { busca } from "../../service/Service";
+import { useNavigate } from "react-router-dom";
 import { TokenState } from "../../store/tokens/tokensReducer";
+import { busca } from "../../service/Service";
+import { toast } from "react-toastify";
+import { Box } from "@mui/material";
+import Regimen from "../../model/Regimen";
 import "./DietasPaciente.css"
 
 function DietasPaciente() {
@@ -17,7 +17,6 @@ function DietasPaciente() {
     )
     const [posts, setPosts] = useState<Regimen[]>([])
     const [nomeProduto, setNomeProduto] = useState("");
-    const [myProdutos, setMyProdutos] = useState<Regimen[]>([])
 
     useEffect(() => {
         if (token === '') {
@@ -33,7 +32,7 @@ function DietasPaciente() {
             });
             navigate('/login')
         }
-    }, [token])
+    }, [token, navigate])
 
 
 
@@ -41,7 +40,7 @@ function DietasPaciente() {
         setNomeProduto(e.target.value)
     }
 
-    async function getDietasByName() {
+    const getDietasByName = useCallback(async () => {
         if (nomeProduto !== "")
             await busca(`/service-diet/regimen/regimenName/${nomeProduto}`, setPosts,
                 {
@@ -49,11 +48,11 @@ function DietasPaciente() {
                         'Authorization': ""
                     }
                 })
-    }
+    }, [nomeProduto])
 
     useEffect(() => {
         getDietasByName()
-    }, [posts.length])
+    }, [posts.length, getDietasByName])
 
     return (
         <>

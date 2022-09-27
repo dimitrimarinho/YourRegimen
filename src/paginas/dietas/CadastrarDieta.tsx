@@ -1,11 +1,11 @@
 import { Button, Container, TextField, Typography } from "@material-ui/core";
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { buscaId, post, put } from "../../service/Service";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
 import { toast } from "react-toastify";
 import Regimen from "../../model/Regimen";
-import { buscaId, post, put } from "../../service/Service";
-import { TokenState } from "../../store/tokens/tokensReducer";
 import "./CadastrarDieta.css"
 
 function CadastrarDieta() {
@@ -22,7 +22,7 @@ function CadastrarDieta() {
     })
 
     useEffect(() => {
-        if (token == "") {
+        if (token === "") {
             toast.error('Você precisa estar logado!', {
                 position: "top-right",
                 autoClose: 2000,
@@ -35,21 +35,21 @@ function CadastrarDieta() {
             });
             navigate('/loginNutricionista')
         };
-    }, [token])
+    }, [token, navigate])
 
     useEffect(() => {
+        async function findById(id: string) {
+            buscaId(`/service-diet/regimen/${id}`, setDieta, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        }
+
         if (id !== undefined) {
             findById(id)
         }
-    }, [id])
-
-    async function findById(id: string) {
-        buscaId(`/service-diet/regimen/${id}`, setDieta, {
-            headers: {
-                'Authorization': token
-            }
-        })
-    }
+    }, [token, id])
 
     function updatedTema(e: ChangeEvent<HTMLInputElement>) {
         setDieta({

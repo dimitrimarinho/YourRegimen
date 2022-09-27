@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import Navbar from './components/estaticos/navbar/Navbar';
 import Footer from './components/estaticos/footer/Footer';
 import Home from './paginas/home/Home';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
 import Login from './paginas/Login/Login';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import CadastroCategoria from './components/categorias/cadastroCategoria/CadastroCategoria';
@@ -10,16 +11,16 @@ import DeletarCategoria from './components/categorias/deletarCategoria/DeletarCa
 import ListarCategoria from './components/categorias/listarCategoria/ListarCategoria';
 import ListaRegimen from './components/regimens/listarRegimen/ListaRegimen';
 import CadastroRegimen from './components/regimens/cadastroRegimen/CadastroRegimen';
-import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import store from './store/store';
-import 'react-toastify/dist/ReactToastify.css';
 import CadastroAdmin from './paginas/cadastroUsuario/CadastroAdmin';
 import LoginAdmin from './paginas/Login/LoginAdmin';
 import DietasPaciente from './paginas/dietas/DietasPaciente';
 import HomeNutricionista from './paginas/home/HomeNutricionista';
 import CadastrarCategoria from './paginas/dietas/CadastrarCategoria';
 import CadastrarDieta from './paginas/dietas/CadastrarDieta';
+import NotFoundPage from "./paginas/notFoundPage/NotFoundPage";
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
             <Route path="/home-nutricionista" element={<HomeNutricionista />} />
             <Route path="cadastrar-categoria" element={<CadastrarCategoria />} />
             <Route path="cadastrar-dieta" element={<CadastrarDieta />} />
-
+            <Route path="*" element={NotFoundPage} />
           </Routes>
         </div>
         <Footer />
